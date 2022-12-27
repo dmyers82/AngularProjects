@@ -1,0 +1,18 @@
+<div class="text-white m-2">
+    <div class="p-2 bg-warning">
+        The <span [ngStyle]="getStyles(1)">first</span>
+        product is {{model.getProduct(1).name}}.
+    </div>
+    <div class="p-2 bg-info">
+        The <span [style.fontSize.px]="fontSizeWithoutUnits">second</span>
+        product is {{model.getProduct(2).name}}
+    </div>
+    <div class="text-white m-2">
+        <div [ngClass]="getClassesByPosition(0)">
+        The first product is {{getProductByPosition(0).name}}.
+        </div>
+        <div [ngClass]="getClassesByPosition(1)">
+        The second product is {{getProductByPosition(1).name}}
+        </div>
+    </div>
+</div>
