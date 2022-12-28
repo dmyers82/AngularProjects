@@ -4,9 +4,8 @@
     </div>
 </div>
 
-<div *ngIf="getProductCount() > 4" class="bg-info p-2 mt-1">
-    There are more than 4 products in the model
-</div>
-<div *ngIf="getProductByPosition(0).name != 'Kayak'" class="bg-info p-2 mt-1">
-    The first product isn't a Kayak
+<div class="bg-info p-2 mt-1" [ngSwitch]="getProductCount()">
+    <span *ngSwitchCase="2">There are two products</span>
+    <span *ngSwitchCase="5">There are five products</span>
+    <span *ngSwitchDefault>This is the default</span>
 </div>
