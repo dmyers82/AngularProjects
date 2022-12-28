@@ -20,34 +20,19 @@ export class ProductComponent {
         return this.model.getProducts()[position];
     }
     
-    getClassesByPosition(position: number): string {
-        let product = this.getProductByPosition(position);
-        return "p-2 " + (product.price < 50 ? "bg-info" : "bg-warning");
-    }
-    
-    getClasses(key: number): string {
-        let product = this.model.getProduct(key);
-        console.log("component.ts - getClasses called. product price is " + product.price);
-        return "p-2 " + (product.price < 50 ? "bg-info" : "bg-warning");
+    getProduct(key: number): Product {
+        return this.model.getProduct(key);
     }
 
-    getClassMap(key: number): Object {
-        let product = this.model.getProduct(key);
-        return {
-                "text-center bg-danger": product.name == "Kayak",
-                "bg-info": product.price < 50
-        };
-  
+    getProducts(): Product[] {
+        return this.model.getProducts();
     }
 
-    getStyles(key: number) {
-        let product = this.model.getProduct(key);
-        return {
-                fontSize: "30px",
-                "margin.px": 100,
-                color: product.price > 50 ? "red" : "green"
-        };
+    getProductCount(): number {
+        return this.getProducts().length;
     }
+        
+    targetName: string = "Kayak";
 
     fontSizeWithUnits: string = "30px";
     fontSizeWithoutUnits: string= "30";

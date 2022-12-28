@@ -1,18 +1,12 @@
 <div class="text-white m-2">
-    <div class="p-2 bg-warning">
-        The <span [ngStyle]="getStyles(1)">first</span>
-        product is {{model.getProduct(1).name}}.
+    <div class="bg-info p-2">
+        There are {{getProductCount()}} products.
     </div>
-    <div class="p-2 bg-info">
-        The <span [style.fontSize.px]="fontSizeWithoutUnits">second</span>
-        product is {{model.getProduct(2).name}}
+</div>
+
+<div *ngIf="getProductCount() > 4" class="bg-info p-2 mt-1">
+    There are more than 4 products in the model
     </div>
-    <div class="text-white m-2">
-        <div [ngClass]="getClassesByPosition(0)">
-        The first product is {{getProductByPosition(0).name}}.
-        </div>
-        <div [ngClass]="getClassesByPosition(1)">
-        The second product is {{getProductByPosition(1).name}}
-        </div>
-    </div>
+    <div *ngIf="getProductByPosition(0).name != 'Kayak'" class="bg-info p-2 mt-1">
+    The first product isn't a Kayak
 </div>
