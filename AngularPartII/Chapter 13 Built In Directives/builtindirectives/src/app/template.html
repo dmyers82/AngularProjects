@@ -1,4 +1,4 @@
-<div class="text-white m-2">
+`w2q12 <div class="text-white m-2">
     <div class="bg-info p-2">
         There are {{getProductCount()}} products.
     </div>
@@ -7,8 +7,8 @@
 <table class="table table-sm table-bordered mt-1">
     <tr class="text-dark">
         <th></th><th>Name</th><th>Category</th><th>Price</th>
-        </tr>
-        <tr *ngFor="let item of getProducts(); let i = index; let odd = odd;
+    </tr>
+    <tr *ngFor="let item of getProducts(); let i = index; let odd = odd;
         let first = first; let last = last" class="text-white"
         [class.bg-primary]="odd" [class.bg-info]="!odd"
         [class.bg-warning]="first || last">
