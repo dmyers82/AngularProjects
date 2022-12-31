@@ -4,9 +4,10 @@
     </div>
 </div>
 
-<table class="table table-sm table-bordered mt-1 text-dark">
+<table class="table table-sm table-bordered mt-1">
     <tr><th></th><th>Name</th><th>Category</th><th>Price</th></tr>
-    <tr *ngFor="let item of getProducts(); let i = index">
+    <tr *ngFor="let item of getProducts(); let i = index; let odd = odd"
+        class="text-white" [class.bg-primary]="odd" [class.bg-info]="!odd">
         <td>{{item.name}}</td>
         <td>{{item.category}}</td>
         <td>{{item.price}}</td>
