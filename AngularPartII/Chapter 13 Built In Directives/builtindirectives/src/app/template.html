@@ -9,7 +9,7 @@
         <th></th><th>Name</th><th>Category</th><th>Price</th>
     </tr>
     <tr *ngFor="let item of getProducts(); let i = index; let odd = odd;
-        let first = first; let last = last" class="text-white"
+        let first = first; let last = last; trackBy:getKey" class="text-white"
         [class.bg-primary]="odd" [class.bg-info]="!odd"
         [class.bg-warning]="first || last">
         <td>{{item.name}}</td>
