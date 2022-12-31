@@ -16,25 +16,6 @@
     [ngTemplateOutletContext]="{title: 'Footer'}">
 </ng-template>
 
-<!-- <div class="bg-info p-2 text-white">
-    Next Product is {{nextProduct.name}}
+<div class="bg-info p-2 text-white">
+    The rounded price is {{getProductPrice(1)}}
 </div>
-
-<div class="bg-info p-2">
-    Counter: {{counter = counter + 1}}
-</div>
-
-<table class="table table-sm table-bordered mt-1">
-    <tr class="text-dark">
-        <th></th><th>Name</th><th>Category</th><th>Price</th>
-    </tr>
-    <tr *ngFor="let item of getProducts(); let i = index; let odd = odd;
-        let first = first; let last = last; trackBy:getKey" class="text-white"
-        [class.bg-primary]="odd" [class.bg-info]="!odd"
-        [class.bg-warning]="first || last">
-        <td>{{item.name}}</td>
-        <td>{{item.category}}</td>
-        <td>{{item.price}}</td>
-        <td *ngIf="!last">{{item.price}}</td>
-    </tr>
-</table> -->
