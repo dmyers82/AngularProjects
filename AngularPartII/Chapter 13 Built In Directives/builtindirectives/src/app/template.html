@@ -1,8 +1,15 @@
-`w2q12 <div class="text-white m-2">
+<ng-template #titleTemplate>
+    <h4 class="p-2 bg-success text-white">Repeated Content</h4>
+    </ng-template>
+<ng-template [ngTemplateOutlet]="titleTemplate"></ng-template>
+
+<div class="text-white m-2">
     <div class="bg-info p-2">
         There are {{getProductCount()}} products.
     </div>
 </div>
+
+<ng-template [ngTemplateOutlet]="titleTemplate"></ng-template>
 
 <table class="table table-sm table-bordered mt-1">
     <tr class="text-dark">
