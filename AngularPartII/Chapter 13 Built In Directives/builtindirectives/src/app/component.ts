@@ -43,4 +43,8 @@ export class ProductComponent {
     fontSizeWithoutUnits: string= "30";
 
     counter: number = 1;
+
+    get nextProduct(): Product {
+        return this.model.getProducts().shift();
+    }
 }
