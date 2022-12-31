@@ -29,13 +29,14 @@ export class ProductComponent {
     }
 
     getProductCount(): number {
+        console.log("getProductCount invoked");
         return this.getProducts().length;
     }
 
     getKey(index: number, product: Product) {
         return product.id;
     }
-        
+
     targetName: string = "Kayak";
 
     fontSizeWithUnits: string = "30px";
