@@ -17,6 +17,10 @@ export class ProductComponent {
     getProducts(): Product[] {
         return this.model.getProducts();
     }
-    
-    selectedProduct: Product;
+  
+    selectedProduct: string;
+    getSelected(product: Product): boolean {
+        console.log("getselected - " + product.name);
+        return product.name == this.selectedProduct;
+    }
 }
