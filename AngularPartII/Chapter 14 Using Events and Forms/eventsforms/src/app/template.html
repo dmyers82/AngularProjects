@@ -12,4 +12,8 @@
             <td>{{item.price}}</td>
         </tr>
     </table>
+    <div class="form-group">
+        <label>Product Name</label>
+        <input class="form-control" (input)="selectedProduct=$event.target.value" />
+    </div>
 </div>
