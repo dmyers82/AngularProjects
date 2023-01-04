@@ -15,18 +15,11 @@
                 required
                 minlength="5"
                 pattern="^[A-Za-z ]+$" />
-            <ul class="text-danger list-unstyled" *ngIf="name.dirty && name.invalid">
-                <li *ngIf="name.errors.required">
-                    You must enter a product name
-                </li>
-                <li *ngIf="name.errors.pattern">
-                    Product names can only contain letters and spaces
-                </li>
-                <li *ngIf="name.errors.minlength">
-                    Product names must be at least
-                    {{name.errors.minlength.requiredLength}} characters
-                </li>
-            </ul>    
+                <ul class="text-danger list-unstyled" *ngIf="name.dirty && name.invalid">
+                    <li *ngFor="let error of getValidationMessages(name)">
+                        {{error}}
+                    </li>
+                </ul>   
         </div>
         <button class="btn btn-primary" type="submit">
             Create

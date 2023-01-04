@@ -32,6 +32,7 @@ export class ProductComponent {
         let thing: string = state.path || thingName;
         let messages: string[] = [];
         if (state.errors) {
+            console.log("getValidationMessages - " + state.errors);
             for (let errorName in state.errors) {
                 switch (errorName) {
                     case "required":
