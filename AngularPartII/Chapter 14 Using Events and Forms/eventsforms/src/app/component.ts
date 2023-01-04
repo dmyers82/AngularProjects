@@ -32,8 +32,8 @@ export class ProductComponent {
         let thing: string = state.path || thingName;
         let messages: string[] = [];
         if (state.errors) {
-            console.log("getValidationMessages - " + state.errors);
             for (let errorName in state.errors) {
+                console.log("getValidationMessages - " + errorName);
                 switch (errorName) {
                     case "required":
                         messages.push(`You must enter a ${thing}`);
