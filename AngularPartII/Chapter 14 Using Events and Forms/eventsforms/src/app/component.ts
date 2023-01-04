@@ -18,9 +18,13 @@ export class ProductComponent {
         return this.model.getProducts();
     }
   
-    selectedProduct: string;
-    getSelected(product: Product): boolean {
-        console.log("getselected - " + product.name);
-        return product.name == this.selectedProduct;
+    newProduct: Product = new Product();
+
+    get jsonProduct() {
+        return JSON.stringify(this.newProduct);
+    }
+
+    addProduct(p: Product) {
+        console.log("New Product: " + this.jsonProduct);
     }
 }
