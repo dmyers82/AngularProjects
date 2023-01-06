@@ -4,8 +4,12 @@
 </style>
 
 <div class="m-2">
-    <div class="bg-info p-2 mb-2">Model Data: {{jsonProduct}}</div>
-    <form novalidate (ngSubmit)="addProduct(newProduct)">
+    <form novalidate #form="ngForm" (ngSubmit)="submitForm(form)">
+        <div class="bg-danger text-white p-2 mb-2"
+            *ngIf="formSubmitted && form.invalid">
+            There are problems with the form
+        </div>
+        
         <div class="form-group">
             <label>Name</label>
             <input class="form-control"
@@ -15,7 +19,7 @@
                 required
                 minlength="5"
                 pattern="^[A-Za-z ]+$" />
-                <ul class="text-danger list-unstyled" *ngIf="name.dirty && name.invalid">
+                <ul class="text-danger list-unstyled" *ngIf="(formSubmitted || name.dirty) && name.invalid">
                     <li *ngFor="let error of getValidationMessages(name)">
                         {{error}}
                     </li>
