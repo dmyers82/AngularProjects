@@ -61,6 +61,13 @@ export class ProductComponent {
     submitForm() {
         Object.keys(this.formGroup.controls)
             .forEach(c => this.newProduct[c] = this.formGroup.controls[c].value);
+        
+        for (let i = 0; i < 2; i++)
+        {
+            console.log("submitForm controls: " + i);
+            //console.log("submitForm controls: " + this.formGroup.controls[i].value);
+        }
+
         this.formSubmitted = true;
         if (this.formGroup.valid) {
             this.addProduct(this.newProduct);
