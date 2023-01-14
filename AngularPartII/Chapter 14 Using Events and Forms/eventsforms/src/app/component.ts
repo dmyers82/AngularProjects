@@ -2,6 +2,7 @@ import { ApplicationRef, Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Model } from "./repository.model";
 import { Product } from "./product.model";
+import { ProductFormGroup, ProductFormControl } from "./form.model";
 
 @Component({
         selector: "app",
@@ -10,6 +11,7 @@ import { Product } from "./product.model";
 
 export class ProductComponent {
     model: Model = new Model();
+    formGroup: ProductFormGroup = new ProductFormGroup();
 
     getProduct(key: number): Product {
         return this.model.getProduct(key);
@@ -29,7 +31,7 @@ export class ProductComponent {
         console.log("New Product: " + this.jsonProduct);
     }
 
-    getValidationMessages(state: any, thingName?: string) {
+    /* getValidationMessages(state: any, thingName?: string) {
         let thing: string = state.path || thingName;
         let messages: string[] = [];
         if (state.errors) {
@@ -52,26 +54,28 @@ export class ProductComponent {
                 }
             }
             return messages;
-    }
+    } */
 
     formSubmitted: boolean = false;
 
-    submitForm(form: NgForm) {
+    submitForm() {
+        Object.keys(this.formGroup.controls)
+            .forEach(c => this.newProduct[c] = this.formGroup.controls[c].value);
         this.formSubmitted = true;
-        if (form.valid) {
+        if (this.formGroup.valid) {
             this.addProduct(this.newProduct);
             this.newProduct = new Product();
-            form.reset();
+            this.formGroup.reset();
             this.formSubmitted = false;
         }
     }
 
-    getFormValidationMessages(form: NgForm): string[] {
+    /* getFormValidationMessages(form: NgForm): string[] {
         let messages: string[] = [];
         Object.keys(form.controls).forEach(k => {
         this.getValidationMessages(form.controls[k], k)
         .forEach(m => messages.push(m));
         });
         return messages;
-    }
+    } */
 }
