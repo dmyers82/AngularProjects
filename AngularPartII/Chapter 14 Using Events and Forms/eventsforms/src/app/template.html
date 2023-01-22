@@ -13,38 +13,15 @@
             </li>
         </ul>
     </div>
-
-    <div class="form-group">
-        <label>Name</label>
-        <input class="form-control" name="name" formControlName="name" />
+    
+    <div class="form-group" *ngFor="let control of formGroup.productControls">
+        <label>{{control.label}}</label>
+        <input class="form-control"
+            name="{{control.modelProperty}}"
+            formControlName="{{control.modelProperty}}" />
         <ul class="text-danger list-unstyled"
-            *ngIf="(formSubmitted || formGroup.controls['name'].dirty) &&
-            formGroup.controls['name'].invalid">
-            <li *ngFor="let error of formGroup.getValidationMessages('name')">
-                {{error}}
-            </li>
-        </ul>
-    </div>
-
-    <div class="form-group">
-        <label>Category</label>
-        <input class="form-control" name="name" formControlName="category" />
-        <ul class="text-danger list-unstyled"
-            *ngIf="(formSubmitted || formGroup.controls['category'].dirty) &&
-            formGroup.controls['category'].invalid">
-            <li *ngFor="let error of formGroup.getValidationMessages('category')">
-                {{error}}
-            </li>
-        </ul>
-    </div>
-
-    <div class="form-group">
-        <label>Price</label>
-        <input class="form-control" name="price" formControlName="price" />
-        <ul class="text-danger list-unstyled"
-            *ngIf="(formSubmitted || formGroup.controls['price'].dirty) &&
-            formGroup.controls['price'].invalid">
-            <li *ngFor="let error of formGroup.getValidationMessages('price')">
+            *ngIf="(formSubmitted || control.dirty) && control.invalid">
+            <li *ngFor="let error of control.getValidationMessages()">
                 {{error}}
             </li>
         </ul>
