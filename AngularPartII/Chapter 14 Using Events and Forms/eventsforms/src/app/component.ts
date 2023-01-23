@@ -29,60 +29,15 @@ export class ProductComponent {
 
     addProduct(p: Product) {
         console.log("New Product: " + this.jsonProduct);
+        this.model.saveProduct(p);
     }
 
-    /* getValidationMessages(state: any, thingName?: string) {
-        let thing: string = state.path || thingName;
-        let messages: string[] = [];
-        if (state.errors) {
-            for (let errorName in state.errors) {
-                console.log("getValidationMessages - " + errorName);
-                switch (errorName) {
-                    case "required":
-                        messages.push(`You must enter a ${thing}`);
-                        break;
-                    case "minlength":
-                        messages.push(`A ${thing} must be at least
-                            ${state.errors['minlength'].requiredLength}
-                            characters`);
-                            break;
-                    case "pattern":
-                        messages.push(`The ${thing} contains
-                            illegal characters`);
-                        break;
-                    }
-                }
-            }
-            return messages;
-    } */
-
+ 
     formSubmitted: boolean = false;
 
     submitForm() {
-        Object.keys(this.formGroup.controls)
-            .forEach(c => this.newProduct[c] = this.formGroup.controls[c].value);
-        
-        for (let i = 0; i < 2; i++)
-        {
-            console.log("submitForm controls: " + i);
-            //console.log("submitForm controls: " + this.formGroup.controls[i].value);
-        }
-
-        this.formSubmitted = true;
-        if (this.formGroup.valid) {
-            this.addProduct(this.newProduct);
-            this.newProduct = new Product();
-            this.formGroup.reset();
-            this.formSubmitted = false;
-        }
+        /* Object.keys(this.formGroup.controls)
+            .forEach(c => this.newProduct[c] = this.formGroup.controls[c].value); */
+        this.addProduct(this.newProduct);
     }
-
-    /* getFormValidationMessages(form: NgForm): string[] {
-        let messages: string[] = [];
-        Object.keys(form.controls).forEach(k => {
-        this.getValidationMessages(form.controls[k], k)
-        .forEach(m => messages.push(m));
-        });
-        return messages;
-    } */
 }
