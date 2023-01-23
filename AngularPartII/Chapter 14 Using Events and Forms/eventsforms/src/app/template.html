@@ -31,8 +31,8 @@
             <tr *ngFor="let item of getProducts(); let i = index" pa-attr>
                 <td>{{i + 1}}</td>
                 <td>{{item.name}}</td>
-                <td>{{item.category}}</td>
-                <td>{{item.price}}</td>
+                <td pa-attr pa-attr-class="bg-warning">{{item.category}}</td>
+                <td pa-attr pa-attr-class="bg-info">{{item.price}}</td>
             </tr>
         </table>
     </div>
