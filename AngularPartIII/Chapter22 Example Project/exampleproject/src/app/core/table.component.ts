@@ -32,7 +32,7 @@ export class TableComponent {
     }
 
     createProduct() {
-        this.state.id = undefined;
+        this.state.id = 0;
         this.state.mode = MODES.CREATE;
     }
 }
