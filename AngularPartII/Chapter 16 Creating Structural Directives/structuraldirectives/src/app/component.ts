@@ -12,6 +12,7 @@ import { ProductFormGroup, ProductFormControl } from "./form.model";
 export class ProductComponent {
     model: Model = new Model();
     formGroup: ProductFormGroup = new ProductFormGroup();
+    showTable: boolean = false;
 
     getProduct(key: number): Product {
         return this.model.getProduct(key);
