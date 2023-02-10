@@ -37,7 +37,7 @@ export class PaIteratorDirective {
             new PaIteratorContext(addition.item,
             addition.currentIndex, changes.length));
         });
-}
+    }
 }
     }
     /* private updateContent() {
@@ -48,8 +48,8 @@ export class PaIteratorDirective {
                     i, this.dataSource.length));
         }
         console.log("updateContent Called.");
-    } */
-}
+    } 
+} */
 class PaIteratorContext{
     odd: boolean; even: boolean;
     first: boolean; last: boolean;
