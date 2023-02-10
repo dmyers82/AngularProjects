@@ -13,6 +13,7 @@ export class ProductComponent {
     model: Model = new Model();
     formGroup: ProductFormGroup = new ProductFormGroup();
     showTable: boolean = false;
+    darkColor: boolean = false;
 
     getProduct(key: number): Product {
         return this.model.getProduct(key);
