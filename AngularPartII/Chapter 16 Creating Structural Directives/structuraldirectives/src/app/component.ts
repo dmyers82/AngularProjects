@@ -33,6 +33,10 @@ export class ProductComponent {
         this.model.saveProduct(p);
     }
 
+    deleteProduct(key: number) {
+        this.model.deleteProduct(key);
+    }
+
  
     formSubmitted: boolean = false;
 
