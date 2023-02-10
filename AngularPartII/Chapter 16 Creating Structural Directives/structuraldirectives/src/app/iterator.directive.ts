@@ -35,5 +35,9 @@ class PaIteratorContext{
         this.last = index == total - 1;
         console.log("PaIteratorContext Constructor Called. - " + this.odd);
         console.log("PaIteratorContext Constructor Called. - " + this.even);
+        setInterval(() => {
+            this.odd = !this.odd; this.even = !this.even;
+            this.$implicit.price++;
+        }, 2000);
     }
 }
