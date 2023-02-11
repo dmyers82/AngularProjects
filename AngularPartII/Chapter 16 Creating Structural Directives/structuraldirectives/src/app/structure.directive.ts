@@ -1,6 +1,6 @@
-import {
-    Directive, SimpleChange, ViewContainerRef, TemplateRef, Input
-} from "@angular/core";
+import { Directive, Input, Output, EventEmitter,
+    SimpleChange, ContentChildren, QueryList, ViewContainerRef, TemplateRef } from "@angular/core";
+import { PaCellColor } from "./cellColor.directive";
 
 @Directive({
     selector: "[paIf]"
