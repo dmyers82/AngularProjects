@@ -1,0 +1,32 @@
+<div class="m-2">
+    <div class="m-2">
+
+        <div class="bg-info text-white mb-2 p-2">Model Data: {{jsonProduct}}</div>
+
+        <div class="form-group">
+            <label>Customer ID</label>
+            <input class="form-control" [(ngModel)]="newCustomer.id"/>
+        </div>
+    
+        <div class="form-group">
+            <label>First Name</label>
+            <input class="form-control" [(ngModel)]="newCustomer.firstname"/>
+        </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input class="form-control" [(ngModel)]="newCustomer.lastname"/>
+        </div>
+
+        <div class="form-group">
+            <label>SSNEIN</label>
+            <input class="form-control" [(ngModel)]="newCustomer.ssntin"/>
+        </div>
+
+        <div class="form-group">
+            <label>Account</label>
+            <input class="form-control" [(ngModel)]="newCustomer.accountnumber"/>
+        </div>
+        <button class="btn btn-primary" (click)="addCustomer(newCustomer)">Create</button>
+    </div>
+</div>
