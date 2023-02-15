@@ -1,32 +1,49 @@
+<style>
+    input.ng-dirty.ng-invalid { border: 2px solid #ff0000 }
+    input.ng-dirty.ng-valid { border: 2px solid #6bc502 }
+</style>
+
 <div class="m-2">
     <div class="m-2">
 
         <div class="bg-info text-white mb-2 p-2">Model Data: {{jsonProduct}}</div>
-
-        <div class="form-group">
-            <label>Customer ID</label>
-            <input class="form-control" [(ngModel)]="newCustomer.id"/>
-        </div>
+        <form class="m-2" novalidate (ngSubmit)="submitForm()">
+            <div class="form-group">
+                <label>Customer ID</label>
+                <input name = "custid" class="form-control" [(ngModel)]="newCustomer.id"/>
+            </div>
+        
+            <div class="form-group">
+                <label>First Name</label>
+                <input name = "firstname" class="form-control" [(ngModel)]="newCustomer.firstname"/>
+            </div>
     
-        <div class="form-group">
-            <label>First Name</label>
-            <input class="form-control" [(ngModel)]="newCustomer.firstname"/>
-        </div>
-
-        <div class="form-group">
-            <label>Last Name</label>
-            <input class="form-control" [(ngModel)]="newCustomer.lastname"/>
-        </div>
-
-        <div class="form-group">
-            <label>SSNEIN</label>
-            <input class="form-control" [(ngModel)]="newCustomer.ssntin"/>
-        </div>
-
-        <div class="form-group">
-            <label>Account</label>
-            <input class="form-control" [(ngModel)]="newCustomer.accountnumber"/>
-        </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input name = "lastname" class="form-control" [(ngModel)]="newCustomer.lastname"/>
+            </div>
+    
+            <div class="form-group">
+                <label>SSNEIN</label>
+                <input name = "ssntin"  class="form-control" [(ngModel)]="newCustomer.ssntin"/>
+            </div>
+    
+            <div class="form-group">
+                <label>Account</label>
+                <input name = "accountnumber" class="form-control" [(ngModel)]="newCustomer.accountnumber"/>
+            </div>
+        </form>
         <button class="btn btn-primary" (click)="addCustomer(newCustomer)">Create</button>
     </div>
+
+    <table class="table table-sm table-bordered mt-1 text-dark">
+        <tr><th>Customer ID</th><th>First Name</th><th>Last Name</th><th>SSNTIN</th><th>Account Number</th></tr>
+            <tr *ngFor="let item of getCustomers()" pa-attr>
+            <td>{{item.id}}</td>    
+            <td>{{item.firstname}}</td>
+            <td>{{item.lastname}}</td>
+            <td>{{item.ssntin}}</td>
+            <td>{{item.accountnumber}}</td>
+        </tr>
+    </table>
 </div>
