@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Console } from "console";
+//import { console } from "console";
 import { Product } from "../model/product.model";
 import { Model } from "../model/repository.model";
 import { MODES, SharedState } from "./sharedState.model";
