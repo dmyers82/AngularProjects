@@ -29,6 +29,7 @@ export class FormComponent {
             this.model.saveProduct(this.product);
             this.product = new Product();
             form.reset();
+            console.log("submitForm called. Form reset.");
         }
     }
     resetForm() {
@@ -43,7 +44,7 @@ export class FormComponent {
             }
             this.lastId = this.state.id;
         }
-        console.log("FormComponent called last.id - " + this.lastId);
-        console.log("FormComponent called state.id - " + this.state.id);
+        console.log("ngDoCheck called last.id - " + this.lastId);
+        console.log("ngDoCheck called state.id - " + this.state.id);
     }
 }

@@ -27,8 +27,9 @@ export class TableComponent {
     }
 
     editProduct(key: number) {
-        this.state.id = key;
+        this.state.id = key - 1;
         this.state.mode = MODES.EDIT;
+        console.log("editProduct called; key- " + key);
     }
 
     createProduct() {
