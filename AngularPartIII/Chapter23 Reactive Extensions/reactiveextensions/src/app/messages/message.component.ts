@@ -10,6 +10,7 @@ import { Message } from "./message.model";
 export class MessageComponent {
     lastMessage: Message;
     constructor(messageService: MessageService) {
-    messageService.registerMessageHandler(m => this.lastMessage = m);
+        messageService.registerMessageHandler(m => this.lastMessage = m);
+        console.log("MessageComponent constructor called");
     }
 }

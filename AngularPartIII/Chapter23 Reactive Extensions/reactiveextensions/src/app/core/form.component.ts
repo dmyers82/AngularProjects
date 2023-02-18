@@ -12,8 +12,11 @@ import { MODES, SharedState } from "./sharedState.model";
 
 export class FormComponent {
     product: Product = new Product();
+    lastId: number;
 
-    constructor(private model: Model, private state: SharedState) { }
+    constructor(private model: Model, private state: SharedState) { 
+        console.log("FormComponent constructor called");
+    }
 
     get editing(): boolean {
         return this.state.mode == MODES.EDIT;
@@ -21,13 +24,26 @@ export class FormComponent {
 
     submitForm(form: NgForm) {
         if (form.valid) {
-        this.model.saveProduct(this.product);
-        this.product = new Product();
-        form.reset();
+            this.model.saveProduct(this.product);
+            this.product = new Product();
+            console.log("submitForm called");
+            form.reset();
         }
     }
 
     resetForm() {
         this.product = new Product();
+    }
+
+    ngDoCheck() {
+        if (this.lastId != this.state.id) {
+            this.product = new Product();
+            if (this.state.mode == MODES.EDIT) {
+                Object.assign(this.product, this.model.getProduct(this.state.id));
+            }
+            console.log("ngDoCheck called - last.id - " + this.lastId);
+            console.log("ngDoCheck called - state.id - " + this.state.id);
+            this.lastId = this.state.id;
+        }
     }
 }

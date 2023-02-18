@@ -8,10 +8,12 @@ export class MessageService {
     reportMessage(msg: Message) {
         if (this.handler != null) {
             this.handler(msg);
+            console.log("reportMessage called");
         }
     }
     
     registerMessageHandler(handler: (m: Message) => void) {
         this.handler = handler;
+        console.log("registerMessageHandler called");
     }
 }

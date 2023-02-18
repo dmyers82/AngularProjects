@@ -11,6 +11,7 @@ export class Model {
     constructor(private dataSource: StaticDataSource) {
         this.products = new Array<Product>();
         this.dataSource.getData().forEach(p => this.products.push(p));
+        console.log("Model constructor called");
     }
 
     getProducts(): Product[] {
