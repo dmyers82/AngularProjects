@@ -24,6 +24,7 @@ export class FormComponent {
         }
         this.editing = update.mode == MODES.EDIT;
         console.log("FormComponent constructor called update id " + update.id);
+        console.log("FormComponent constructor called update mode " + update.mode);
         });
 }
         editing: boolean = false;
