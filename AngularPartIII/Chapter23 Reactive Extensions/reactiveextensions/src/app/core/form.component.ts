@@ -1,9 +1,10 @@
 import { Component, Inject } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Product } from "../model/product.model";
-import { Model } from "../model/repository.model"
+import { Model } from "../model/repository.model";
 import { MODES, SharedState, SHARED_STATE } from "./sharedState.model";
 import { Observable } from "rxjs";
+import { filter } from "rxjs/operators";
 
 @Component({
     selector: "paForm",
@@ -17,6 +18,9 @@ export class FormComponent {
 
     constructor(private model: Model,
         @Inject(SHARED_STATE) public stateEvents: Observable<SharedState>) {
+        
+        stateEvents.pipe(filter(state => state.id != 3))
+        //stateEvents.pipe(filter(state => state.id < 6))
         stateEvents.subscribe((update) => {
         this.product = new Product();
         if (update.id != undefined) {

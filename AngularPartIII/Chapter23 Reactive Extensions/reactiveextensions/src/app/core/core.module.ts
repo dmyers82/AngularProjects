@@ -22,10 +22,20 @@ import { MODES } from "./sharedState.model";
         deps: [MessageService, Model],
         useFactory: (messageService, model) => {
         let subject = new Subject<SharedState>();
+
         subject.subscribe(m => messageService.reportMessage(
-        new Message(MODES[m.mode] + (m.id != undefined
+            console.log("messageService.reportMessage called id - " + m.id),
+            new Message(MODES[m.mode] + (m.id != undefined && m.id < 5
+             ? model.getProduct(m.id).name : ""))));
+            
+            
+
+        // subject.subscribe(m => messageService.reportMessage(new Message(MODES[m.mode]))
+
+        /*  subject.subscribe(m => messageService.reportMessage(
+        new Message(MODES[m.mode]+ (m.id != undefined
         ? ` ${model.getProduct(m.id).name}` : "")))
-        );
+        ); */
         return subject;
         }
     }]

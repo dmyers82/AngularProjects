@@ -19,7 +19,7 @@ export class TableComponent {
     }
 
     getProducts(): Product[] {
-        return this.model.getProducts();
+                return this.model.getProducts();
     }
 
     deleteProduct(key: number) {
@@ -27,7 +27,7 @@ export class TableComponent {
     }
 
     editProduct(key: number) {
-        this.observer.next(new SharedState(MODES.EDIT, key));
+        this.observer.next(new SharedState(MODES.EDIT, key - 1));
         console.log("editProduct called key - " + key);
     }
 

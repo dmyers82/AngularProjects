@@ -12,9 +12,10 @@ export class StatePipe {
     transform(value: any): string {
         if (value instanceof SharedState) {
             let state = value as SharedState;
-            return MODES[state.mode] + (state.id != undefined
+            return MODES[state.mode]
+            return MODES[state.mode] + (state.id != undefined && state.id < 6
             ? ` ${this.model.getProduct(state.id).name}` : "");
-            console.log("transform called - getProduct - " + this.model.getProduct(state.id).name);
+            console.log("transform called - getProduct state id - " + state.id);
         }else {
             return "<No Data>"
         }
