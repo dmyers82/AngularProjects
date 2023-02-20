@@ -1,5 +1,6 @@
 <div class="bg-primary text-white p-2" [class.bg-warning]="editing">
     <h5>{{editing ? "Edit" : "Create"}} Product</h5>
+    Last Event: {{ stateEvents | async | formatState }}
 </div>
 
 <form novalidate #form="ngForm" (ngSubmit)="submitForm(form)" (reset)="resetForm()" >
