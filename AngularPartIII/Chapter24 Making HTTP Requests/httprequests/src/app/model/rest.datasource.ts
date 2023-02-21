@@ -1,7 +1,8 @@
 import { Injectable, Inject, InjectionToken } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Product } from "./product.model";
+
 
 export const REST_URL = new InjectionToken("rest_url");
 
@@ -33,9 +34,14 @@ export class RestDataSource {
     }
 
     private sendRequest<T>(verb: string, url: string, body?: Product)
-            : Observable<T> {
+        : Observable<T> {
+
+        let myHeaders = new HttpHeaders();
+        myHeaders = myHeaders.set("Access-Key", "<secret>");
+        myHeaders = myHeaders.set("Application-Names", ["exampleApp", "proAngular"]);
+
         return this.http.request<T>(verb, url, {
-            body: body
-        });
+            body: body,
+            headers: myHeaders        });
     }
 }
