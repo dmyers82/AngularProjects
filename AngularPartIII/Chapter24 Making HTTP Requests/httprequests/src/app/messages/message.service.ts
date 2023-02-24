@@ -8,6 +8,7 @@ export class MessageService {
     private subject = new Subject<Message>();
     reportMessage(msg: Message) {
         this.subject.next(msg);
+        console.log("reportMessage called msg - " + msg.text);
     }
 
     get messages(): Observable<Message> {

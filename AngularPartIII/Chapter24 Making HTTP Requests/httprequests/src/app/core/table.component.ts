@@ -22,7 +22,9 @@ export class TableComponent {
     }
 
     deleteProduct(key: number) {
+        // this.observer.next(new SharedState(MODES.DELETE));
         this.model.deleteProduct(key);
+        console.log("deleteProduct called key - " + key);
     }
 
     editProduct(key: number) {

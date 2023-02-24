@@ -16,15 +16,16 @@ export class FormComponent {
 
     constructor(private model: Model,
         @Inject(SHARED_STATE) public stateEvents: Observable<SharedState>) {
-        stateEvents
         // .pipe(skipWhile(state => state.mode == MODES.EDIT))
         // .pipe(distinctUntilChanged((firstState, secondState) =>
         // firstState.mode == secondState.mode
         // && firstState.id == secondState.id))
+
+        stateEvents
         .subscribe(update => {
         this.product = new Product();
         if (update.id != undefined) {
-        Object.assign(this.product, this.model.getProduct(update.id));
+            Object.assign(this.product, this.model.getProduct(update.id));
         }
         this.editing = update.mode == MODES.EDIT;
         console.log("FormComponent constructor called update id " + update.id);
