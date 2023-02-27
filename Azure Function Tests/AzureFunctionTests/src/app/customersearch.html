@@ -7,6 +7,9 @@
     <div class="m-2">
 
         <div class="bg-info text-white mb-2 p-2">Model Data: {{jsonProduct}}</div>
+
+        <div class="bg-info text-white mb-2 p-2">Customer Name: {{fullname}}</div>
+
         <form class="m-2" novalidate (ngSubmit)="submitForm()">
             <div class="form-group">
                 <label>Customer ID</label>
@@ -34,16 +37,21 @@
             </div>
         </form>
         <button class="btn btn-primary" (click)="addCustomer(newCustomer)">Create</button>
+        
+        <button class="btn btn-primary" (click)="getCustomer(selectedCustomer)">Search</button>
     </div>
 
     <table class="table table-sm table-bordered mt-1 text-dark">
         <tr><th>Customer ID</th><th>First Name</th><th>Last Name</th><th>SSNTIN</th><th>Account Number</th></tr>
-            <tr *ngFor="let item of getCustomers()" pa-attr>
-            <td>{{item.id}}</td>    
-            <td>{{item.firstname}}</td>
-            <td>{{item.lastname}}</td>
-            <td>{{item.ssntin}}</td>
-            <td>{{item.accountnumber}}</td>
-        </tr>
-    </table>
+            <!-- <tr *ngFor="let item of getCustomers()" pa-attr> -->
+            <tr *ngFor="let item of getCustomers(); let i = index"
+                    [class.bg-info]="getSelected(i)">
+                <td (click)="selectedCustomer=item.id - 1">{{i + 1}}</td>
+                <td>{{item.id}}</td>    
+                <td>{{item.firstname}}</td>
+                <td>{{item.lastname}}</td>
+                <td>{{item.ssntin}}</td>
+                <td>{{item.accountnumber}}</td>
+            </tr>
+     </table>
 </div>

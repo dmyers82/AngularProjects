@@ -1,6 +1,8 @@
-import { Component } from "@angular/core"
+import { Component, Inject } from "@angular/core"
 import { Customer } from "./customer.model";
 import { CustomerModel } from "./customerrepository.model";
+import { InjectionToken } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Component({
     selector: "app",
@@ -13,18 +15,26 @@ export class CustomerComponent {
 
     newCustomer: Customer = new Customer();
 
+    foundCustomer: Customer;
+
     customerList: Array<Customer>;
+
+    fullname: string;
 
     get jsonProduct() {
         return JSON.stringify(this.newCustomer);
     }
-    addCustomer(p: Customer) {
+
+    addCustomer(c: Customer) {
         console.log("New Customer: " + this.jsonProduct);
-        (this.model.saveCustomer(p));
+        (this.model.saveCustomer(c));
     }
 
     getCustomer(key: number): Customer {
-        return this.model.getCustomer(key);
+        this.foundCustomer = this.model.getCustomer(key);
+        this.fullname = this.foundCustomer.firstname + " " + this.foundCustomer.lastname;
+        console.log("getCustomer called - " + this.fullname);
+        return this.foundCustomer;
     }
 
     getCustomers(): Customer[] {
@@ -33,6 +43,12 @@ export class CustomerComponent {
 
     getCustomerCount(): number {
         return this.getCustomers().length;
+    }
+
+    selectedCustomer: number;
+
+    getSelected(customer: Customer): boolean {
+        return customer.id == this.selectedCustomer;
     }
 
     formSubmitted: boolean = false;
