@@ -21,6 +21,8 @@ export class CustomerComponent {
 
     fullname: string;
 
+    optPersonal:boolean = true;
+
     get jsonProduct() {
         return JSON.stringify(this.newCustomer);
     }
@@ -49,6 +51,11 @@ export class CustomerComponent {
 
     getSelected(customer: Customer): boolean {
         return customer.id == this.selectedCustomer;
+    }
+
+    getFolderType(personal:boolean){
+        this.optPersonal = personal;
+        console.log("getFolderType called - " + personal.valueOf());
     }
 
     formSubmitted: boolean = false;

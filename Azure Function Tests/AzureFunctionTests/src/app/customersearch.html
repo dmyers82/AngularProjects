@@ -1,6 +1,19 @@
 <style>
     input.ng-dirty.ng-invalid { border: 2px solid #ff0000 }
     input.ng-dirty.ng-valid { border: 2px solid #6bc502 }
+ 
+    p,
+    label {
+        font: 1rem 'Fira Sans', sans-serif;
+    }
+
+    input {
+        margin: 0.4rem;
+    }
+
+    button {
+        column-gap: 2px;
+    }
 </style>
 
 <div class="m-2">
@@ -11,24 +24,40 @@
         <div class="bg-info text-white mb-2 p-2">Customer Name: {{fullname}}</div>
 
         <form class="m-2" novalidate (ngSubmit)="submitForm()">
+
+            <fieldset>
+                <legend>Folder Type</legend>
+                <div>
+                    <label for="personal">Personal</label>
+                        <input type="radio" id="personal" name="folder" value="personal" checked="true" (click)="getFolderType(true)">
+                </div>
+
+                <div>
+                    <label for="business">Business</label>
+                        <input type="radio" id="business" name="folder" value="business"  (click)="getFolderType(false)">
+                </div>
+            </fieldset>
+           
+            <br>
+            
             <div class="form-group">
                 <label>Customer ID</label>
                 <input name = "custid" class="form-control" [(ngModel)]="newCustomer.id"/>
             </div>
-        
+
             <div class="form-group">
-                <label>First Name</label>
-                <input name = "firstname" class="form-control" [(ngModel)]="newCustomer.firstname"/>
+                <label>SSNEIN</label>
+                <input name = "ssntin"  class="form-control" [(ngModel)]="newCustomer.ssntin"/>
             </div>
-    
+
             <div class="form-group">
                 <label>Last Name</label>
                 <input name = "lastname" class="form-control" [(ngModel)]="newCustomer.lastname"/>
             </div>
-    
-            <div class="form-group">
-                <label>SSNEIN</label>
-                <input name = "ssntin"  class="form-control" [(ngModel)]="newCustomer.ssntin"/>
+        
+            <div *ngIf="optPersonal" class="form-group">
+                <label>First Name</label>
+                <input name = "firstname" class="form-control" [(ngModel)]="newCustomer.firstname"/>
             </div>
     
             <div class="form-group">
@@ -36,17 +65,22 @@
                 <input name = "accountnumber" class="form-control" [(ngModel)]="newCustomer.accountnumber"/>
             </div>
         </form>
-        <button class="btn btn-primary" (click)="addCustomer(newCustomer)">Create</button>
-        
-        <button class="btn btn-primary" (click)="getCustomer(selectedCustomer)">Search</button>
+
+        <div class="row">
+            <div class="col-1">
+                <button class="btn btn-primary" (click)="addCustomer(newCustomer)">Create</button>
+            </div>
+            
+            <div class="col-2">
+                <button class="btn btn-primary" (click)="getCustomer(selectedCustomer)">Search</button>
+           </div>
+        </div>
     </div>
 
     <table class="table table-sm table-bordered mt-1 text-dark">
         <tr><th>Customer ID</th><th>First Name</th><th>Last Name</th><th>SSNTIN</th><th>Account Number</th></tr>
-            <!-- <tr *ngFor="let item of getCustomers()" pa-attr> -->
             <tr *ngFor="let item of getCustomers(); let i = index"
-                    [class.bg-info]="getSelected(i)">
-                <td (click)="selectedCustomer=item.id - 1">{{i + 1}}</td>
+                    [class.bg-info]="getSelected(i)" (click)="selectedCustomer=item.id - 1">
                 <td>{{item.id}}</td>    
                 <td>{{item.firstname}}</td>
                 <td>{{item.lastname}}</td>
