@@ -26,7 +26,7 @@ export class MessageComponent {
 
             
             if (this.editing != false){
-                this.lastMessage = new Message("EDIT " + this.model.getProduct(update.id).name);
+                this.lastMessage = new Message("EDIT " + this.model.getCustomer(update.id).lastname);
             }else{
                 if (this.deleting != false){
                     this.lastMessage = new Message("DELETE");

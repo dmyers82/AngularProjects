@@ -1,55 +1,53 @@
 import { Injectable } from "@angular/core";
-import { Product } from "./product.model";
+import { Customer } from "../customercomponent";
 import { StaticDataSource } from "./static.datasource";
 import { Observable } from "rxjs";
 import { RestDataSource } from "./rest.datasource";
 
 @Injectable()
 export class Model {
-    private products: Product[] = new Array<Product>();
-    private locator = (p: Product, id: number) => p.id == id;
+    private customers: Customer[] = new Array<Customer>();
+    private locator = (c: Customer, id: number) => c.id == id;
 
     constructor(private dataSource: RestDataSource) {
-        this.dataSource.getData().subscribe(data => this.products = data);
+        this.dataSource.getData().subscribe(data => this.customers = data);
         console.log("Model constructor called");
     }
 
-    getProducts(): Product[] {
-        return this.products;
+    getCustomers(): Customer[] {
+        return this.customers;
     }
 
-    getProduct(id: number): Product {
-        console.log("Model constructor called Product Name - " + this.products[id].name);
-        return this.products[id];
+    getCustomer(id: number): Customer {
+        console.log("Model constructor called Product Name - " + this.customers[id].lastname);
+        return this.customers[id];
         //return this.products.find(p => this.locator(p, id));
     }
 
-    saveProduct(product: Product) {
-        if (product.id == 0 || product.id == null) {
-            this.dataSource.saveProduct(product)
-            .subscribe(p => this.products.push(p));
-        } else {
-            this.dataSource.updateProduct(product).subscribe(p => {
-            let index = this.products
-            .findIndex(item => this.locator(item, p.id));
-            this.products.splice(index, 1, p);
-            });
+    saveCustomer(customer: Customer) {
+        if (customer.id == 0 || customer.id == null) {
+            customer.id = this.generateID();
+            this.customers.push(customer)
+         } else {
+            let index = this.customers
+                .findIndex(c => this.locator(c, customer.id));
+            this.customers.splice(index, 1, customer);
         }
-        console.log("saveProduct called Product Name - " + this.products[product.id].name);
+        console.log("saveProduct called Customer ID - " + customer.id);
     }
 
     deleteProduct(id: number) {
-        this.dataSource.deleteProduct(id).subscribe(() => {
-            let index = this.products.findIndex(p => this.locator(p, id));
+        this.dataSource.deleteCustomer(id).subscribe(() => {
+            let index = this.customers.findIndex(p => this.locator(p, id));
             if (index > -1) {
-                this.products.splice(index, 1);
+                this.customers.splice(index, 1);
             }
         });
     }
 
     private generateID(): number {
         let candidate = 100;
-        while (this.getProduct(candidate) != null) {
+        while (this.getCustomer(candidate) != null) {
             candidate++;
         }
         return candidate;

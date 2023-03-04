@@ -13,7 +13,7 @@ export class RestDataSource {
         @Inject(REST_URL) private url: string) {console.log("RestDataSource constructor called");}
 
     getData(): Observable<Customer[]> {
-        return this.sendRequest<Customer[]>("GET", this.url);
+        return this.http.get<Customer[]>(this.url);
         console.log("getData called url - " + this.url);
         //return this.http.get<Product[]>(this.url);
     }
@@ -24,14 +24,14 @@ export class RestDataSource {
         //return this.http.post<Product>(this.url, product);
     }
         
-    updateProduct(customer: Customer): Observable<Customer> {
+    updateCustomer(customer: Customer): Observable<Customer> {
         return this.sendRequest<Customer>("PUT",
             `${this.url}/${customer.id}`, customer);
         console.log("updateProduct called url - " + this.url);
         //return this.http.put<Product>(`${this.url}/${product.id}`, product);
     }
         
-    deleteProduct(id: number): Observable<Customer> {
+    deleteCustomer(id: number): Observable<Customer> {
         return this.sendRequest<Customer>("DELETE", `${this.url}/${id}`);
         console.log("deleteProduct called url - " + this.url);
         //return this.http.delete<Product>(`${this.url}/${id}`);
