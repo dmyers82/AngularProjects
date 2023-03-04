@@ -65,3 +65,5 @@ export class CustomerComponent {
         this.addCustomer(this.newCustomer);
     }
 }
+
+export { Customer };
