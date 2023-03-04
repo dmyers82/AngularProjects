@@ -13,28 +13,24 @@ export class RestDataSource {
         @Inject(REST_URL) private url: string) {console.log("RestDataSource constructor called");}
 
     getData(): Observable<Customer[]> {
-        return this.http.get<Customer[]>(this.url);
         console.log("getData called url - " + this.url);
+        return this.http.get<Customer[]>(this.url);
         //return this.http.get<Product[]>(this.url);
     }
 
-    saveProduct(customer: Customer): Observable<Customer> {
-        return this.sendRequest<Customer>("POST", this.url, customer);
-        console.log("saveProduct called url - " + this.url);
-        //return this.http.post<Product>(this.url, product);
+    saveCustomer(customer: Customer): Observable<Customer> {
+        console.log("saveCustomer called url - " + this.url);
+        return this.http.post<Customer>(this.url, customer);
     }
-        
+
     updateCustomer(customer: Customer): Observable<Customer> {
-        return this.sendRequest<Customer>("PUT",
-            `${this.url}/${customer.id}`, customer);
-        console.log("updateProduct called url - " + this.url);
-        //return this.http.put<Product>(`${this.url}/${product.id}`, product);
+        console.log("updateCustomer called url - " + this.url);
+        return this.http.put<Customer>(`${this.url}/${customer.id}`, customer);
     }
-        
+
     deleteCustomer(id: number): Observable<Customer> {
-        return this.sendRequest<Customer>("DELETE", `${this.url}/${id}`);
-        console.log("deleteProduct called url - " + this.url);
-        //return this.http.delete<Product>(`${this.url}/${id}`);
+        console.log("deleteCustomer called url - " + this.url);
+        return this.http.delete<Customer>(`${this.url}/${id}`);
     }
 
     private sendRequest<T>(verb: string, url: string, body?: Customer)
