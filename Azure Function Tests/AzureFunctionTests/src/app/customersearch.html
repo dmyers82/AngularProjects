@@ -16,8 +16,8 @@
     }
 </style>
 
-<div class="m-2">
-    <div class="m-2">
+<div class="row m-2">
+    <div class="col-6">
 
         <div class="bg-info text-white mb-2 p-2">Model Data: {{jsonProduct}}</div>
 
@@ -71,14 +71,16 @@
                 <button class="btn btn-primary" (click)="addCustomer(newCustomer)">Create</button>
             </div>
             
-            <div class="col-2">
+            <div class="col-3">
                 <button class="btn btn-primary" (click)="getCustomer(selectedCustomer)">Search</button>
            </div>
         </div>
     </div>
 
-    <table class="table table-sm table-bordered mt-1 text-dark">
-        <tr><th>Customer ID</th><th>First Name</th><th>Last Name</th><th>SSNTIN</th><th>Account Number</th></tr>
+    <!-- dm 3/4/2023 -->
+    <div class="col-6">
+        <table class="table table-sm table-bordered mt-1 text-dark">
+            <tr><th>Customer ID</th><th>First Name</th><th>Last Name</th><th>SSNTIN</th><th>Account Number</th></tr>
             <tr *ngFor="let item of getCustomers(); let i = index"
                     [class.bg-info]="getSelected(i)" (click)="selectedCustomer=item.id - 1">
                 <td>{{item.id}}</td>    
@@ -87,5 +89,18 @@
                 <td>{{item.ssntin}}</td>
                 <td>{{item.accountnumber}}</td>
             </tr>
+        </table>
+    </div>
+
+    <table class="table table-sm table-bordered mt-1 text-dark">
+        <tr><th>Customer ID</th><th>First Name</th><th>Last Name</th><th>SSNTIN</th><th>Account Number</th></tr>
+        <tr *ngFor="let item of getCustomers(); let i = index"
+                [class.bg-info]="getSelected(i)" (click)="selectedCustomer=item.id - 1">
+            <td>{{item.id}}</td>    
+            <td>{{item.firstname}}</td>
+            <td>{{item.lastname}}</td>
+            <td>{{item.ssntin}}</td>
+            <td>{{item.accountnumber}}</td>
+        </tr>
      </table>
 </div>
