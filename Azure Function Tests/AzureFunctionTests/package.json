@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "json": "json-server --p 3600 customerData.js"
+    "json": "json-server --p 3600 customerData.js",
+    "json2":"json-server --p 3700 customerdetaildata.js"
   },
   "private": true,
   "dependencies": {

@@ -2,12 +2,12 @@ import { NgModule } from "@angular/core";
 import { StaticDataSource } from "./static.datasource";
 import { Model } from "./repository.model";
 import { HttpClientModule } from "@angular/common/http";
-import { RestDataSource, REST_URL } from "./rest.datasource";
+import { RestDataSourceDetail, REST_URL_DETAIL } from "./rest.datasourcedetail";
 
 @NgModule({
     imports: [HttpClientModule],
-    providers: [Model, RestDataSource,
-        { provide: REST_URL, useValue: `http://${location.hostname}:3500/customers` }]
+    providers: [Model, RestDataSourceDetail,
+        { provide: REST_URL_DETAIL, useValue: `http://${location.hostname}:3700/customerdetail` }]
     //providers: [Model, StaticDataSource]
 })
-export class ModelModule { }
+export class ModelDetailModule { }

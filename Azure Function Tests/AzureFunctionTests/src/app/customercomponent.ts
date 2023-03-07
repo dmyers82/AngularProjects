@@ -1,6 +1,7 @@
 import { Component, Inject } from "@angular/core"
 import { Customer } from "./customer.model";
 import { CustomerModel } from "./customerrepository.model";
+import { CustomerDetail} from "./customerdetail.model"
 import { InjectionToken } from "@angular/core";
 import { Observable } from "rxjs";
 
@@ -14,6 +15,8 @@ export class CustomerComponent {
     model: CustomerModel = new CustomerModel();
 
     newCustomer: Customer = new Customer();
+
+    customerDetail: CustomerDetail = new CustomerDetail();
 
     foundCustomer: Customer;
 
@@ -37,6 +40,13 @@ export class CustomerComponent {
         this.fullname = this.foundCustomer.firstname + " " + this.foundCustomer.lastname;
         console.log("getCustomer called - " + this.fullname);
         return this.foundCustomer;
+    }
+
+    getCustomerDetail(key: number) : CustomerDetail {
+        this.foundCustomer = this.model.getCustomer(key);
+        this.fullname = this.foundCustomer.firstname + " " + this.foundCustomer.lastname;
+        console.log("getCustomer called - " + this.fullname);
+        return this.customerDetail;
     }
 
     getCustomers(): Customer[] {
