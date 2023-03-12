@@ -10,7 +10,7 @@ export const REST_URL = new InjectionToken("rest_url");
 export class RestDataSource {
 
     constructor(private http: HttpClient,
-        @Inject(REST_URL) private url: string) {console.log("RestDataSource constructor called");}
+        @Inject(REST_URL) private url: string) {console.log("RestDataSource constructor called; url - " + this.url);}
 
     getData(): Observable<Customer[]> {
         console.log("getData called url - " + this.url);

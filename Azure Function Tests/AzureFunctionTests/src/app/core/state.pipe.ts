@@ -13,7 +13,7 @@ export class StatePipe {
         if (value instanceof SharedState) {
             let state = value as SharedState;
             return MODES[state.mode] + (state.id != undefined
-            ? ` ${this.model.getProduct(state.id).name}` : "");
+            ? ` ${this.model.getCustomer(state.id).lastname}` : "");
         } else {
             return "<No Data>"
         }

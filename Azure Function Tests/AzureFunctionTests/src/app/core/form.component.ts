@@ -1,7 +1,7 @@
 import { Component, Inject } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Observable } from "rxjs";
-import { Product } from "../model/product.model";
+import { Customer } from "../customer.model"
 import { Model } from "../model/repository.model"
 import { MODES, SharedState, SHARED_STATE } from "./sharedState.model";
 
@@ -12,7 +12,7 @@ import { MODES, SharedState, SHARED_STATE } from "./sharedState.model";
 })
 
 export class FormComponent {
-    product: Product = new Product();
+    customer: Customer = new Customer();
 
     constructor(private model: Model,
         @Inject(SHARED_STATE) public stateEvents: Observable<SharedState>) {
@@ -23,9 +23,9 @@ export class FormComponent {
 
         stateEvents
         .subscribe(update => {
-        this.product = new Product();
+        this.customer = new Customer();
         if (update.id != undefined) {
-            Object.assign(this.product, this.model.getProduct(update.id));
+            Object.assign(this.customer, this.model.getCustomer(update.id));
         }
         this.editing = update.mode == MODES.EDIT;
         console.log("FormComponent constructor called update id " + update.id);
@@ -37,13 +37,13 @@ export class FormComponent {
 
     submitForm(form: NgForm) {
         if (form.valid) {
-            this.model.saveProduct(this.product);
-            this.product = new Product();
+            this.model.saveCustomer(this.customer);
+            this.customer = new Customer();
             form.reset();
         }
     }
 
     resetForm() {
-        this.product = new Product();
+        this.customer = new Customer();
     }
 }

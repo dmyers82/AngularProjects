@@ -16,7 +16,6 @@ export class RestDataSourceDetail {
     getData(): Observable<CustomerDetail[]> {
         console.log("getData called url - " + this.url);
         return this.http.get<CustomerDetail[]>(this.url);
-        //return this.http.get<Product[]>(this.url);
     }
 
     saveCustomerDetail(customer: CustomerDetail): Observable<CustomerDetail> {
