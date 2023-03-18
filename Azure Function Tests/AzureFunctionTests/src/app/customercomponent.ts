@@ -4,27 +4,47 @@ import { CustomerModel } from "./customerrepository.model";
 import { CustomerDetail} from "./customerdetail.model"
 import { InjectionToken } from "@angular/core";
 import { Observable } from "rxjs";
+import { MODES, SharedState, SHARED_STATE } from "./core/sharedState.model";
+import { Model } from "./model/repository.model";
+import { ModelDetail } from "./model/repositorydetail.model";
 
 @Component({
     selector: "app",
     templateUrl: "customersearch.html"
 })
 
+//Equalivent to Product Component (See Page 537)
 export class CustomerComponent {
    
-    model: CustomerModel = new CustomerModel();
+    // model: CustomerModel = new CustomerModel();
 
     newCustomer: Customer = new Customer();
 
+    customer: Customer = new Customer();
+
     customerDetail: CustomerDetail = new CustomerDetail();
 
-    foundCustomer: Customer;
+    foundCustomerDetail: Customer;
 
     customerList: Array<Customer>;
 
     fullname: string;
 
     optPersonal:boolean = true;
+
+    editing: boolean = false;
+
+    constructor(private model: Model, private modeldetail: ModelDetail,
+        @Inject(SHARED_STATE) public stateEvents: Observable<SharedState>) {
+        stateEvents
+        .subscribe(update => {
+        this.customer = new Customer();
+        if (update.id != undefined) {
+            Object.assign(this.customer, this.model.getCustomer(update.id));
+        }
+        this.editing = update.mode == MODES.EDIT;
+        });
+    }
 
     get jsonProduct() {
         return JSON.stringify(this.newCustomer);
@@ -36,16 +56,16 @@ export class CustomerComponent {
     }
 
     getCustomer(key: number): Customer {
-        this.foundCustomer = this.model.getCustomer(key);
-        this.fullname = this.foundCustomer.firstname + " " + this.foundCustomer.lastname;
+        this.foundCustomerDetail = this.model.getCustomer(key);
+        this.fullname = this.foundCustomerDetail.firstname + " " + this.foundCustomerDetail.lastname;
         console.log("getCustomer called - " + this.fullname);
-        return this.foundCustomer;
+        return this.foundCustomerDetail;
     }
 
     getCustomerDetail(key: number) : CustomerDetail {
-        this.foundCustomer = this.model.getCustomer(key);
-        this.fullname = this.foundCustomer.firstname + " " + this.foundCustomer.lastname;
-        console.log("getCustomer called - " + this.fullname);
+        this.foundCustomerDetail = this.model.getCustomer(key);
+        this.fullname = this.foundCustomerDetail.firstname + " " + this.foundCustomerDetail.lastname;
+        console.log("getCustomerDetail called - " + this.fullname);
         return this.customerDetail;
     }
 
@@ -73,6 +93,10 @@ export class CustomerComponent {
     submitForm() {
         console.log("Submit Form Called");
         this.addCustomer(this.newCustomer);
+    }
+
+    resetForm(){
+        this.customer = new Customer();
     }
 }
 

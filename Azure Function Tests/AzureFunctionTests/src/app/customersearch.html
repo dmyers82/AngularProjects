@@ -132,10 +132,16 @@
             <button class="btn btn-primary" (click)="addCustomer(newCustomer)">Create</button>
         </div>
         
-        <div class="col-3">
+        <div class="col-2">
             <button class="btn btn-primary" (click)="getCustomer(selectedCustomer)">Search</button>
        </div>
+
+       <div class="col-3">
+            <button class="btn btn-primary" (click)="getCustomerDetail(1)">Select</button>
+       </div>
     </div>
+
+    <br><br><br>
 
     <table class="table table-sm table-bordered mt-1 text-dark">
         <tr><th>Customer ID</th><th>First Name</th><th>Last Name</th><th>SSNTIN</th><th>Account Number</th></tr>

@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Customer } from "../customercomponent";
-import { StaticDataSource } from "./static.datasource";
+import { Customer } from "../customer.model";
 import { Observable } from "rxjs";
 import { RestDataSource } from "./rest.datasource";
 
@@ -19,7 +18,7 @@ export class Model {
     }
 
     getCustomer(id: number): Customer {
-        console.log("Model constructor called Product Name - " + this.customers[id].lastname);
+        console.log("Model constructor called Customer Name - " + this.customers[id].lastname);
         return this.customers[id];
         //return this.products.find(p => this.locator(p, id));
     }

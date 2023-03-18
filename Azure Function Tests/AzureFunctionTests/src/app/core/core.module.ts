@@ -3,8 +3,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { ModelModule } from "../model/model.module";
 import { ModelDetailModule} from "../model/modeldetail.module"
-import { TableComponent } from "./table.component";
-import { FormComponent } from "./form.component";
 import { SharedState, SHARED_STATE } from "./sharedState.model";
 import { Subject } from "rxjs";
 import { StatePipe } from "./state.pipe";
@@ -16,8 +14,8 @@ import { MODES } from "./sharedState.model";
 
 @NgModule({
     imports: [BrowserModule, FormsModule, ModelModule, ModelDetailModule, MessageModule],
-    declarations: [TableComponent, FormComponent, StatePipe],
-    exports: [ModelModule, ModelDetailModule, TableComponent, FormComponent],
+    declarations: [StatePipe],
+    exports: [ModelModule, ModelDetailModule],
     providers: [{
         provide: SHARED_STATE,
         deps: [MessageService, Model],

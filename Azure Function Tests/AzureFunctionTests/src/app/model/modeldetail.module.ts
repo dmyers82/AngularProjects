@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-import { StaticDataSource } from "./static.datasource";
 import { Model } from "./repository.model";
 import { HttpClientModule } from "@angular/common/http";
 import { RestDataSourceDetail, REST_URL_DETAIL } from "./rest.datasourcedetail";

@@ -1,48 +1,48 @@
 import { Injectable } from "@angular/core";
 import { Customer } from "../customercomponent";
-import { StaticDataSource } from "./static.datasource";
+// import { StaticDataSource } from "./static.datasource";
 import { Observable } from "rxjs";
 import { RestDataSourceDetail } from "./rest.datasourcedetail";
 import { CustomerDetail } from "../customerdetail.model";
 
 @Injectable()
-export class Model {
-    private customers: Customer[] = new Array<Customer>();
-    private locator = (c: Customer, id: number) => c.id == id;
+export class ModelDetail {
+    private customerDetails: CustomerDetail[] = new Array<CustomerDetail>();
+    private locator = (c: CustomerDetail, id: number) => c.id == id;
 
     constructor(private dataSource: RestDataSourceDetail) {
-        this.dataSource.getData().subscribe(data => this.customers = data);
+        this.dataSource.getDataDetail().subscribe(data => this.customerDetails = data);
         console.log("Model constructor called");
     }
 
-    getCustomers(): Customer[] {
-        return this.customers;
+    getCustomerDetails(): CustomerDetail[] {
+        return this.customerDetails;
     }
 
-    getCustomer(id: number): Customer {
-        console.log("Model constructor called Product Name - " + this.customers[id].lastname);
-        return this.customers[id];
+    getCustomerDetail(id: number): Customer {
+        console.log("Model constructor called Product Name - " + this.customerDetails[id].fullname);
+        return this.customerDetails[id];
     }
 
-    saveCustomer(customer: CustomerDetail) {
-        if (customer.id == 0 || customer.id == null) {
-            this.dataSource.saveCustomerDetail(customer)
-            .subscribe(c => this.customers.push(c));
+    saveCustomerDetail(customerdetail: CustomerDetail) {
+        if (customerdetail.id == 0 || customerdetail.id == null) {
+            this.dataSource.saveCustomerDetail(customerdetail)
+            .subscribe(c => this.customerDetails.push(c));
             } else {
-            this.dataSource.updateCustomerDetail(customer).subscribe(c => {
-            let index = this.customers
+            this.dataSource.updateCustomerDetail(customerdetail).subscribe(c => {
+            let index = this.customerDetails
             .findIndex(item => this.locator(item, c.id));
-            this.customers.splice(index, 1, c);
+            this.customerDetails.splice(index, 1, c);
             });
         }
-        console.log("saveProduct called Customer ID - " + customer.id);
+        console.log("saveProduct called Customer ID - " + customerdetail.id);
     }
 
-    deleteProduct(id: number) {
+    deleteCustomerDetail(id: number) {
         this.dataSource.deleteCustomerDetail(id).subscribe(() => {
-            let index = this.customers.findIndex(p => this.locator(p, id));
+            let index = this.customerDetails.findIndex(p => this.locator(p, id));
             if (index > -1) {
-                this.customers.splice(index, 1);
+                this.customerDetails.splice(index, 1);
             }
             console.log("deleteProduct called Customer ID - " + id);
         });
@@ -50,7 +50,7 @@ export class Model {
 
     private generateID(): number {
         let candidate = 100;
-        while (this.getCustomer(candidate) != null) {
+        while (this.getCustomerDetail(candidate) != null) {
             candidate++;
         }
         return candidate;

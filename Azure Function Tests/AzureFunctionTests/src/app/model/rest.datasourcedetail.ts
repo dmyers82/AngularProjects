@@ -13,23 +13,23 @@ export class RestDataSourceDetail {
     constructor(private http: HttpClient,
         @Inject(REST_URL_DETAIL) private url: string) {console.log("RestDataSourceDetail constructor called");}
 
-    getData(): Observable<CustomerDetail[]> {
-        console.log("getData called url - " + this.url);
+    getDataDetail(): Observable<CustomerDetail[]> {
+        console.log("getDataDetail called url - " + this.url);
         return this.http.get<CustomerDetail[]>(this.url);
     }
 
     saveCustomerDetail(customer: CustomerDetail): Observable<CustomerDetail> {
-        console.log("saveCustomer called url - " + this.url);
+        console.log("saveCustomerDetail called url - " + this.url);
         return this.http.post<CustomerDetail>(this.url, customer);
     }
 
     updateCustomerDetail(customer: CustomerDetail): Observable<Customer> {
-        console.log("updateCustomer called url - " + this.url);
+        console.log("updateCustomerDetail called url - " + this.url);
         return this.http.put<CustomerDetail>(`${this.url}/${customer.id}`, customer);
     }
 
     deleteCustomerDetail(id: number): Observable<CustomerDetail> {
-        console.log("deleteCustomer called url - " + this.url);
+        console.log("deleteCustomerDetail called url - " + this.url);
         return this.http.delete<CustomerDetail>(`${this.url}/${id}`);
     }
 
