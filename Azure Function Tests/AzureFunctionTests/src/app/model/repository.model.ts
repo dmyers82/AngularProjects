@@ -18,7 +18,7 @@ export class Model {
     }
 
     getCustomer(id: number): Customer {
-        console.log("Model constructor called Customer Name - " + this.customers[id].lastname);
+        console.log("getCustomer called Customer Name - " + this.customers[id].lastname);
         return this.customers[id];
         //return this.products.find(p => this.locator(p, id));
     }

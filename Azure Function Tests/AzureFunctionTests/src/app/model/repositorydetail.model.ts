@@ -12,15 +12,15 @@ export class ModelDetail {
 
     constructor(private dataSource: RestDataSourceDetail) {
         this.dataSource.getDataDetail().subscribe(data => this.customerDetails = data);
-        console.log("Model constructor called");
+        console.log("ModelDetail constructor called");
     }
 
     getCustomerDetails(): CustomerDetail[] {
         return this.customerDetails;
     }
 
-    getCustomerDetail(id: number): Customer {
-        console.log("Model constructor called Product Name - " + this.customerDetails[id].fullname);
+    getCustomerDetail(id: number): CustomerDetail {
+        console.log("getCustomerDetail called Customer Name - " + this.customerDetails[id].fullname);
         return this.customerDetails[id];
     }
 

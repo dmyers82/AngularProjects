@@ -24,7 +24,9 @@ export class CustomerComponent {
 
     customerDetail: CustomerDetail = new CustomerDetail();
 
-    foundCustomerDetail: Customer;
+    foundCustomer: Customer;
+
+    foundCustomerDetail: CustomerDetail;
 
     customerList: Array<Customer>;
 
@@ -38,6 +40,7 @@ export class CustomerComponent {
         @Inject(SHARED_STATE) public stateEvents: Observable<SharedState>) {
         stateEvents
         .subscribe(update => {
+        console.log("CustomerComponent constructor called");
         this.customer = new Customer();
         if (update.id != undefined) {
             Object.assign(this.customer, this.model.getCustomer(update.id));
@@ -56,17 +59,18 @@ export class CustomerComponent {
     }
 
     getCustomer(key: number): Customer {
-        this.foundCustomerDetail = this.model.getCustomer(key);
-        this.fullname = this.foundCustomerDetail.firstname + " " + this.foundCustomerDetail.lastname;
+        this.foundCustomer = this.model.getCustomer(key);
+        this.fullname = this.foundCustomer.firstname + " " + this.foundCustomer.lastname;
         console.log("getCustomer called - " + this.fullname);
-        return this.foundCustomerDetail;
+        return this.foundCustomer;
     }
 
     getCustomerDetail(key: number) : CustomerDetail {
-        this.foundCustomerDetail = this.model.getCustomer(key);
-        this.fullname = this.foundCustomerDetail.firstname + " " + this.foundCustomerDetail.lastname;
+        this.foundCustomerDetail = this.modeldetail.getCustomerDetail(key);
+        this.fullname = this.foundCustomerDetail.fullname;
         console.log("getCustomerDetail called - " + this.fullname);
-        return this.customerDetail;
+        console.log("Phone Number - " + this.foundCustomerDetail.phone);
+        return this.foundCustomerDetail;
     }
 
     getCustomers(): Customer[] {
