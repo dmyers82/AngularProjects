@@ -40,7 +40,7 @@ export class ModelDetail {
 
     deleteCustomerDetail(id: number) {
         this.dataSource.deleteCustomerDetail(id).subscribe(() => {
-            let index = this.customerDetails.findIndex(p => this.locator(p, id));
+            let index = this.customerDetails.findIndex(c => this.locator(c, id));
             if (index > -1) {
                 this.customerDetails.splice(index, 1);
             }

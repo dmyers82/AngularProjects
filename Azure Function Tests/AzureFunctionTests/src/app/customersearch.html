@@ -126,6 +126,10 @@
             <input name = "accountnumberdetail" class="form-control" [value]="foundCustomerDetail?.accountnumber || 'None'"/>
         </div>
 
+        <div class="col-4">
+            <button class="btn btn-primary" (click)="saveCustomer(foundCustomer)">Update</button>
+        </div>
+
     </div>
 
     <div class="row">
@@ -142,7 +146,7 @@
        </div>
 
        <div class="col-4">
-        <button class="btn btn-primary" (click)="getCustomerDetail(selectedCustomer)">Delete</button>
+        <button class="btn btn-primary" (click)="deleteCustomer(selectedCustomer)">Delete</button>
        </div>
     </div>
 

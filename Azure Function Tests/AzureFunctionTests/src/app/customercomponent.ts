@@ -58,6 +58,14 @@ export class CustomerComponent {
         (this.model.saveCustomer(c));
     }
 
+    deleteCustomer(key:number){
+        this.model.deleteCustomer(key);
+    }
+
+    saveCustomer(c:Customer){
+        this.model.saveCustomer(c);
+    }
+
     getCustomer(key: number): Customer {
         this.foundCustomer = this.model.getCustomer(key);
         this.fullname = this.foundCustomer.firstname + " " + this.foundCustomer.lastname;

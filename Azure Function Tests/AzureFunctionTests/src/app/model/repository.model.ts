@@ -7,6 +7,7 @@ import { RestDataSource } from "./rest.datasource";
 export class Model {
     private customers: Customer[] = new Array<Customer>();
     private locator = (c: Customer, id: number) => c.id == id;
+    private deletedCustomers: Customer;
 
     constructor(private dataSource: RestDataSource) {
         this.dataSource.getData().subscribe(data => this.customers = data);
@@ -42,7 +43,9 @@ export class Model {
         this.dataSource.deleteCustomer(id).subscribe(() => {
             let index = this.customers.findIndex(c => this.locator(c, id));
             if (index > -1) {
-                this.customers.splice(index, 1);
+                this.customers.splice(index, 1, this.deletedCustomers);
+                console.log("deleteCustomer called index - " + index);
+                console.log("Deleted Customers - " + this.deletedCustomers.firstname + " " + this.deletedCustomers.lastname);
             }
         });
     }
