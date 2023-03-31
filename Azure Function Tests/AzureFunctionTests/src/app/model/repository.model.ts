@@ -45,7 +45,7 @@ export class Model {
             if (index > -1) {
                 this.customers.splice(index, 1, this.deletedCustomers);
                 console.log("deleteCustomer called index - " + index);
-                console.log("Deleted Customers - " + this.deletedCustomers.firstname + " " + this.deletedCustomers.lastname);
+                //console.log("Deleted Customers - " + this.deletedCustomers.firstname + " " + this.deletedCustomers.lastname);
             }
         });
     }

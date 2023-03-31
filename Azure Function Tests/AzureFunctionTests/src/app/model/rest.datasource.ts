@@ -30,7 +30,7 @@ export class RestDataSource {
 
     deleteCustomer(id: number): Observable<Customer> {
         console.log("deleteCustomer called url - " + this.url);
-        return this.http.delete<Customer>(`${this.url}/${id + 1}`);
+        return this.http.delete<Customer>(`${this.url}/${id}`);
     }
 
     private sendRequest<T>(verb: string, url: string, body?: Customer)

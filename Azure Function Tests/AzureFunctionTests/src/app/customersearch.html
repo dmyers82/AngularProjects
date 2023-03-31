@@ -23,8 +23,10 @@
 
         <div class="bg-info text-white mb-2 p-2">Customer Name: {{fullname}}</div>
 
-        <form class="m-2" novalidate (ngSubmit)="submitForm()">
+        <div class="bg-info text-success mb-2 p-2">Azure Function Response: {{fullname}}</div>
 
+        <!-- <form class="m-2" novalidate (ngSubmit)="submitForm()"> -->
+        <form class="m-2">
             <fieldset>
                 <legend>Folder Type</legend>
                 <div>
@@ -64,6 +66,32 @@
                 <label>Account</label>
                 <input name = "accountnumber" class="form-control" [(ngModel)]="newCustomer.accountnumber"/>
             </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-2">
+                    <button class="btn btn-primary" (click)="saveCustomer(foundCustomer)">Update</button>
+                </div>
+    
+                <div class="col-2">
+                    <button class="btn btn-primary" (click)="deleteCustomer(selectedCustomer)">Delete</button>
+                </div>
+
+                <div class="col-2">
+                    <button class="btn btn-primary" (click)="getCustomerDetail(selectedCustomer)">Select</button>
+               </div>
+
+               <div class="col-2">
+                    <button class="btn btn-primary" (click)="addCustomer(newCustomer)">Create</button>
+               </div>
+            
+               <div class="col-2">
+                   <button class="btn btn-primary" (click)="getCustomer(selectedCustomer)">Search</button>
+               </div>
+
+            </div>
+            
         </form>
     </div>
 
@@ -125,37 +153,15 @@
             <label>Account</label>
             <input name = "accountnumberdetail" class="form-control" [value]="foundCustomerDetail?.accountnumber || 'None'"/>
         </div>
+       
+   </div>
 
-        <div class="col-4">
-            <button class="btn btn-primary" (click)="saveCustomer(foundCustomer)">Update</button>
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-1">
-            <button class="btn btn-primary" (click)="addCustomer(newCustomer)">Create</button>
-        </div>
-        
-        <div class="col-2">
-            <button class="btn btn-primary" (click)="getCustomer(selectedCustomer)">Search</button>
-       </div>
-
-       <div class="col-3">
-            <button class="btn btn-primary" (click)="getCustomerDetail(selectedCustomer)">Select</button>
-       </div>
-
-       <div class="col-4">
-        <button class="btn btn-primary" (click)="deleteCustomer(selectedCustomer)">Delete</button>
-       </div>
-    </div>
-
-    <br><br><br>
+   <br><br><br>
 
     <table class="table table-sm table-bordered mt-1 text-dark">
         <tr><th>Customer ID</th><th>First Name</th><th>Last Name</th><th>SSNTIN</th><th>Account Number</th></tr>
         <tr *ngFor="let item of getCustomers(); let i = index"
-                [class.bg-info]="getSelected(i)" (click)="selectedCustomer=item.id - 1">
+                [class.bg-info]="getSelected(i)" (click)="selectedCustomer=item.id">
             <td>{{item.id}}</td>    
             <td>{{item.firstname}}</td>
             <td>{{item.lastname}}</td>

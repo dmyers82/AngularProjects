@@ -54,11 +54,12 @@ export class CustomerComponent {
     }
 
     addCustomer(c: Customer) {
-        console.log("New Customer: " + this.jsonProduct);
+        console.log("addCustomer called: " + c.firstname + " " + c.lastname);
         (this.model.saveCustomer(c));
     }
 
     deleteCustomer(key:number){
+        console.log("deleteCustomer called; key " + key);
         this.model.deleteCustomer(key);
     }
 
@@ -98,6 +99,10 @@ export class CustomerComponent {
     getFolderType(personal:boolean){
         this.optPersonal = personal;
         console.log("getFolderType called - " + personal.valueOf());
+    }
+
+    getAzureCustomer(){
+
     }
 
     formSubmitted: boolean = false;
