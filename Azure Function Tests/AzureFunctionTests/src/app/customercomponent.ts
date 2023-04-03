@@ -7,6 +7,8 @@ import { Observable } from "rxjs";
 import { MODES, SharedState, SHARED_STATE } from "./core/sharedState.model";
 import { Model } from "./model/repository.model";
 import { ModelDetail } from "./model/repositorydetail.model";
+import { ModelAzure} from "./model/repositoryazure.model";
+import { CustomerAzure } from "./customerazure.model";
 
 @Component({
     selector: "app",
@@ -16,8 +18,6 @@ import { ModelDetail } from "./model/repositorydetail.model";
 //Equalivent to Product Component (See Page 537)
 export class CustomerComponent {
    
-    // model: CustomerModel = new CustomerModel();
-
     newCustomer: Customer = new Customer();
 
     customer: Customer = new Customer();
@@ -30,13 +30,16 @@ export class CustomerComponent {
 
     customerList: Array<Customer>;
 
+    customerAzure: CustomerAzure;
+
     fullname: string;
 
     optPersonal:boolean = true;
 
     editing: boolean = false;
 
-    constructor(private model: Model, private modeldetail: ModelDetail,
+    constructor(private model: Model, private modeldetail: ModelDetail, 
+        private modelazure: ModelAzure,
         @Inject(SHARED_STATE) public stateEvents: Observable<SharedState>) {
         stateEvents
         .subscribe(update => {
@@ -51,6 +54,10 @@ export class CustomerComponent {
 
     get jsonProduct() {
         return JSON.stringify(this.newCustomer);
+    }
+
+    get jsonProductAzure() {
+        return JSON.stringify(this.customerAzure);
     }
 
     addCustomer(c: Customer) {
@@ -101,8 +108,9 @@ export class CustomerComponent {
         console.log("getFolderType called - " + personal.valueOf());
     }
 
-    getAzureCustomer(){
-
+    getAzureCustomer(key: number):CustomerAzure{
+        console.log("getAzureCustomer called - " + this.customerAzure.id);
+        return this.modelazure.getAzureCustomer(key);
     }
 
     formSubmitted: boolean = false;
