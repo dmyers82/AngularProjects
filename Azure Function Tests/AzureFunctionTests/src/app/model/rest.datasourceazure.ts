@@ -43,7 +43,8 @@ export class RestDataSourceAzure {
         myHeaders = myHeaders.set("Access-Key", "<secret>");
         myHeaders = myHeaders.set("Application-Names", ["AzureFunction", "proAngular"]);
 
-        console.log("sendRequest called verb - " + verb + " url " + url);
+        console.log("sendRequest called verb - " + verb + " url " + url );
+        //console.log("sendRequest called verb - " + verb + " url " + url + " body - " + body.fullname);
 
         return this.http.request<T>(verb, url, {
             body: body,

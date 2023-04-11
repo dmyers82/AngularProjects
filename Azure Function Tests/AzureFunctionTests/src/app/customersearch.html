@@ -44,51 +44,56 @@
             
             <div class="form-group">
                 <label>Customer ID</label>
-                <input name = "custid" class="form-control" [(ngModel)]="newCustomer.id"/>
+                <input title="custid" name = "custid" class="form-control" [(ngModel)]="newCustomer.id"/>
             </div>
 
             <div class="form-group">
                 <label>SSNEIN</label>
-                <input name = "ssntin"  class="form-control" [(ngModel)]="newCustomer.ssntin"/>
+                <input title= "ssnin" name = "ssntin"  class="form-control" [(ngModel)]="newCustomer.ssntin"/>
             </div>
 
             <div class="form-group">
                 <label>Last Name</label>
-                <input name = "lastname" class="form-control" [(ngModel)]="newCustomer.lastname"/>
+                <input title= "lastname"  name = "lastname" class="form-control" [(ngModel)]="newCustomer.lastname"/>
             </div>
         
             <div *ngIf="optPersonal" class="form-group">
                 <label>First Name</label>
-                <input name = "firstname" class="form-control" [(ngModel)]="newCustomer.firstname"/>
+                <input title="firstname" name = "firstname" class="form-control" [(ngModel)]="newCustomer.firstname"/>
             </div>
     
             <div class="form-group">
                 <label>Account</label>
-                <input name = "accountnumber" class="form-control" [(ngModel)]="newCustomer.accountnumber"/>
+                <input title="accountnumber" name = "accountnumber" class="form-control" [(ngModel)]="newCustomer.accountnumber"/>
             </div>
 
             <br>
 
             <div class="row">
                 <div class="col-2">
-                    <button class="btn btn-primary" (click)="saveCustomer(foundCustomer)">Update</button>
+                    <button type="button" class="btn btn-primary" (click)="saveCustomer(foundCustomer)">Update</button>
                 </div>
     
                 <div class="col-2">
-                    <button class="btn btn-primary" (click)="deleteCustomer(selectedCustomer)">Delete</button>
+                    <button type="button" class="btn btn-primary" (click)="deleteCustomer(selectedCustomer)">Delete</button>
                 </div>
 
                 <div class="col-2">
-                    <button class="btn btn-primary" (click)="getCustomerDetail(selectedCustomer)">Select</button>
+                    <button type="button" class="btn btn-primary" (click)="getCustomerDetail(selectedCustomer)">Select</button>
                </div>
 
                <div class="col-2">
-                    <button class="btn btn-primary" (click)="addCustomer(newCustomer)">Create</button>
+                    <button type="button" class="btn btn-primary" (click)="addCustomer(newCustomer)">Create</button>
                </div>
             
                <div class="col-2">
-                   <button class="btn btn-primary" (click)="getCustomer(selectedCustomer)">Search</button>
+                   <button type="button" class="btn btn-primary" (click)="getCustomer(selectedCustomer)">Search</button>
                </div>
+
+               <div class="col-2">
+                   <button type="button" class="btn btn-primary" (click)="getAzureCustomer(selectedCustomer)">Azure</button>
+               </div>
+
 
             </div>
             
@@ -100,58 +105,58 @@
     <div class="col-6">
         <div class="form-group">
             <label>Customer ID</label>
-            <input name = "custiddetail" class="form-control" [value]="foundCustomerDetail?.id || '0'"/>
+            <input title="custiddetail" name = "custiddetail" class="form-control" [value]="foundCustomerDetail?.id || '0'"/>
             <!-- <input name = "custiddetail" class="form-control" [(ngModel)]="foundCustomerDetail.id"/> -->
         </div>
 
         <div class="form-group">
             <label> Full Name</label>
-            <input name = "fullname" class="form-control" [value]="foundCustomerDetail?.fullname || 'None'"/>
+            <input title="fullname" name = "fullname" class="form-control" [value]="foundCustomerDetail?.fullname || 'None'"/>
         </div>
 
         <div class="form-group">
             <label>Address</label>
-            <input name = "address"  class="form-control" [value]="foundCustomerDetail?.address || 'None'"/>
+            <input title="address" name = "address"  class="form-control" [value]="foundCustomerDetail?.address || 'None'"/>
         </div>
 
         <div class="form-group">
             <label>City</label>
-            <input name = "city" class="form-control" [value]="foundCustomerDetail?.city || 'None'"/>
+            <input title="city" name = "city" class="form-control" [value]="foundCustomerDetail?.city || 'None'"/>
         </div>
     
         <div class="form-group">
             <label>State</label>
-            <input name = "state" class="form-control" [value]="foundCustomerDetail?.state || 'None'"/>
+            <input title="state" name = "state" class="form-control" [value]="foundCustomerDetail?.state || 'None'"/>
         </div>
 
         <div class="form-group">
             <label>ZIP</label>
-            <input name = "zip" class="form-control" [value]="foundCustomerDetail?.zip || 'None'"/>
+            <input title="zip" name = "zip" class="form-control" [value]="foundCustomerDetail?.zip || 'None'"/>
         </div>
 
         <div class="form-group">
             <label>SSNEIN</label>
-            <input name = "ssntindetail"  class="form-control" [value]="foundCustomerDetail?.ssntin || 'None'"/>
+            <input title="ssntindetail" name = "ssntindetail"  class="form-control" [value]="foundCustomerDetail?.ssntin || 'None'"/>
         </div>
 
         <div class="form-group">
             <label>Phone</label>
-            <input name = "phone" class="form-control" [value]="foundCustomerDetail?.phone || 'None'"/>
+            <input title="phone" name = "phone" class="form-control" [value]="foundCustomerDetail?.phone || 'None'"/>
         </div>
 
         <div class="form-group">
             <label>Birth Date</label>
-            <input name = "birthdate" class="form-control" [value]="foundCustomerDetail?.birthdate || 'None'"/>
+            <input title="birthdate" name = "birthdate" class="form-control" [value]="foundCustomerDetail?.birthdate || 'None'"/>
         </div>
 
         <div class="form-group">
             <label>Email</label>
-            <input name = "email"  class="form-control" [value]="foundCustomerDetail?.email || 'None'"/>
+            <input title="email" name = "email"  class="form-control" [value]="foundCustomerDetail?.email || 'None'"/>
         </div>
 
         <div class="form-group">
             <label>Account</label>
-            <input name = "accountnumberdetail" class="form-control" [value]="foundCustomerDetail?.accountnumber || 'None'"/>
+            <input  title="accountnumberdetail" name = "accountnumberdetail" class="form-control" [value]="foundCustomerDetail?.accountnumber || 'None'"/>
         </div>
        
    </div>

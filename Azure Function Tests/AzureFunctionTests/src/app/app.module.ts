@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { ModelModule } from "./model/model.module";
 import { ModelDetailModule } from "./model/modeldetail.module";
 import { CoreModule } from "./core/core.module";
+import { ModelAzureModule } from "./model/modelazure.module"
 
 import { AppComponent } from './app.component';
 import { CustomerComponent } from './customercomponent';
@@ -17,7 +18,7 @@ import { MessageComponent } from "./messages/message.component";
     AppComponent, CustomerComponent, PaAttrDirective
   ],
   imports: [
-    BrowserModule, FormsModule, ModelModule, CoreModule, MessageModule, ModelDetailModule,
+    BrowserModule, FormsModule, ModelModule, CoreModule, MessageModule, ModelDetailModule, ModelAzureModule,
   ],
   providers: [],
   bootstrap: [CustomerComponent, MessageComponent ]
