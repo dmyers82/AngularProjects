@@ -109,7 +109,7 @@ export class CustomerComponent {
     }
 
     getAzureCustomer(key: number):CustomerAzure{
-        console.log("getAzureCustomer called - " + this.customerAzure.id);
+        console.log("getAzureCustomer called - " + key);
         return this.modelazure.getAzureCustomer(key);
     }
 

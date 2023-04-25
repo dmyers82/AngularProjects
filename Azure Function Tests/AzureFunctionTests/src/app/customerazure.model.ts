@@ -1,3 +1,4 @@
+import {CustomerAcctsAzure } from "./customeracctsazure.model"
 export class CustomerAzure {
     constructor(public id?: any,
     public fullname?: string,
@@ -9,5 +10,6 @@ export class CustomerAzure {
     public phone?: string,
     public birthdate?: string,
     public email?: number,
-    public accountnumber?: number) { }
+    public accountnumber?: number,
+    public accounts?: CustomerAcctsAzure) { }
 }

@@ -15,9 +15,9 @@ export class RestDataSourceAzure {
     constructor(private http: HttpClient,
         @Inject(REST_URL_AZURE) private url: string) {console.log("RestDataSourceDetailAzure constructor called");}
 
-    getDataAzure(): Observable<CustomerAzure[]> {
-        console.log("getDataDetail called url - " + this.url);
-        return this.sendRequest<CustomerAzure[]>("GET", this.url, this.azurecustomers);
+    getDataAzure(id:number): Observable<CustomerAzure> {
+        console.log("getDataAzure called url - " + this.url);
+        return this.sendRequest<CustomerAzure>("GET", this.url + "?id="+ id, this.azurecustomers);
         // return this.http.get<CustomerDetail[]>(this.url);
     }
 

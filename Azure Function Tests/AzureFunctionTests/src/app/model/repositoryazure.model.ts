@@ -13,7 +13,7 @@ export class ModelAzure {
 
     constructor(private dataSource: RestDataSourceAzure) {
         console.log("ModelAzure constructor called");
-        this.dataSource.getDataAzure().subscribe(data => this.azureCustomers = data);
+        //this.dataSource.getDataAzure().subscribe(data => this.azureCustomers = data);
     }
 
     getAzureCustomers(): CustomerAzure[] {
@@ -21,8 +21,9 @@ export class ModelAzure {
     }
 
     getAzureCustomer(id: number): CustomerAzure {
-        console.log("getAzureCustomer called Azure Name - " + this.azureCustomers[id].fullname);
-        return this.azureCustomers[id];
+        console.log("getAzureCustomer called id - " + id);
+        this.dataSource.getDataAzure(id).subscribe(data => this.azureCustomer = data);
+        return this.azureCustomer;
     }
 
     saveAzureCustomer(azurecustomer: CustomerAzure) {
@@ -49,11 +50,11 @@ export class ModelAzure {
         });
     }
 
-    private generateID(): number {
+    /* private generateID(): number {
         let candidate = 100;
         while (this.getAzureCustomer(candidate) != null) {
             candidate++;
         }
         return candidate;
-    }
+    } */
 }
