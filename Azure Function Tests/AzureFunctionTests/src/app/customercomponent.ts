@@ -9,6 +9,7 @@ import { Model } from "./model/repository.model";
 import { ModelDetail } from "./model/repositorydetail.model";
 import { ModelAzure} from "./model/repositoryazure.model";
 import { CustomerAzure } from "./customerazure.model";
+import { CustomerAzure2 } from "./customerazure.model2";
 
 @Component({
     selector: "app",
@@ -32,11 +33,15 @@ export class CustomerComponent {
 
     customerAzure: CustomerAzure;
 
+    customerAzure2: CustomerAzure2;
+
     fullname: string;
 
     optPersonal:boolean = true;
 
     editing: boolean = false;
+
+    custjson: string;
 
     constructor(private model: Model, private modeldetail: ModelDetail, 
         private modelazure: ModelAzure,
@@ -58,6 +63,12 @@ export class CustomerComponent {
 
     get jsonProductAzure() {
         return JSON.stringify(this.customerAzure);
+    }
+
+    get jsonCustomerAzure() {
+        this.custjson = JSON.stringify(this.customerAzure2);
+        console.log("JSON Customer - " + this.custjson);
+        return this.custjson;
     }
 
     addCustomer(c: Customer) {
@@ -108,9 +119,13 @@ export class CustomerComponent {
         console.log("getFolderType called - " + personal.valueOf());
     }
 
-    getAzureCustomer(key: number):CustomerAzure{
+    getAzureCustomer(key: number):CustomerAzure2{
         console.log("getAzureCustomer called - " + key);
-        return this.modelazure.getAzureCustomer(key);
+        this.customerAzure2 = this.modelazure.getAzureCustomer(key);
+        //console.log("Customer Azure - " + this.jsonCustomerAzure);
+        //this.jsonCustomerAzure;
+        //console.log("AzureCustomer Occupation - " + this.customerAzure2.Occupation);
+        return this.customerAzure2;
     }
 
     formSubmitted: boolean = false;

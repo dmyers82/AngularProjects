@@ -4,6 +4,7 @@ import { Observable, throwError } from "rxjs";
 import { CustomerDetail } from "../customerdetail.model"
 import { catchError } from "rxjs/operators";
 import { CustomerAzure } from "../customerazure.model";
+import { CustomerAzure2 } from "../customerazure.model2";
 
 export const REST_URL_AZURE = new InjectionToken("rest_url_azure");
 
@@ -11,16 +12,24 @@ export const REST_URL_AZURE = new InjectionToken("rest_url_azure");
 export class RestDataSourceAzure {
 
     azurecustomers:CustomerAzure;
+    azurecustomer:CustomerAzure2;
+    jsonobject:JSON;
 
     constructor(private http: HttpClient,
         @Inject(REST_URL_AZURE) private url: string) {console.log("RestDataSourceDetailAzure constructor called");}
 
-    getDataAzure(id:number): Observable<CustomerAzure> {
+    /* getDataAzure(id:number): Observable<CustomerAzure2> {
         console.log("getDataAzure called url - " + this.url);
-        return this.sendRequest<CustomerAzure>("GET", this.url + "?id="+ id, this.azurecustomers);
+        return this.sendRequest<CustomerAzure2>("GET", this.url + "?id="+ id, this.azurecustomer);
+        // return this.http.get<CustomerDetail[]>(this.url);
+    } */
+
+    getDataAzure(id:number): Observable<CustomerAzure2> {
+        console.log("getDataAzure called url - " + this.url);
+        return this.sendRequest<CustomerAzure2>("GET", this.url + "?id="+ id, this.azurecustomer);
         // return this.http.get<CustomerDetail[]>(this.url);
     }
-
+    
     saveAzureCustomer(customer: CustomerAzure): Observable<CustomerAzure> {
         console.log("saveCustomerDetail called url - " + this.url);
         return this.http.post<CustomerAzure>(this.url, customer);
@@ -39,16 +48,23 @@ export class RestDataSourceAzure {
     private sendRequest<T>(verb: string, url: string, body?: CustomerAzure)
         : Observable<T> {
 
-        let myHeaders = new HttpHeaders();
+        let myHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+
+
+        /*  let myHeaders = new HttpHeaders();
         myHeaders = myHeaders.set("Access-Key", "<secret>");
         myHeaders = myHeaders.set("Application-Names", ["AzureFunction", "proAngular"]);
-
+        */
         console.log("sendRequest called verb - " + verb + " url " + url );
         //console.log("sendRequest called verb - " + verb + " url " + url + " body - " + body.fullname);
 
         return this.http.request<T>(verb, url, {
+            body: body, headers: myHeaders}).pipe(catchError((error: Response) =>
+            throwError(`Network Error: ${error.statusText} (${error.status})`)));
+
+        /* return this.http.request<T>(verb, url, {
             body: body,
             headers: myHeaders}).pipe(catchError((error: Response) =>
-            throwError(`Network Error: ${error.statusText} (${error.status})`)));
+            throwError(`Network Error: ${error.statusText} (${error.status})`))); */
     }
 }
