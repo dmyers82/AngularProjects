@@ -24,8 +24,8 @@ export class ModelAzure {
 
     getAzureCustomer(id: number): CustomerAzure2 {
         console.log("getAzureCustomer called id - " + id);
-        this.dataSource.getDataAzure(id).subscribe(data => this.azureCustomer = data);
-        return this.azureCustomer;
+        this.dataSource.getDataAzure(id).subscribe(data => this.azurecustomer2 = data);
+        return this.azurecustomer2;
     }
 
     saveAzureCustomer(azurecustomer: CustomerAzure) {
