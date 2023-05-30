@@ -4,6 +4,8 @@ import { Observable } from "rxjs";
 import { Product } from "../model/product.model";
 import { Model } from "../model/repository.model"
 import { MODES, SharedState, SHARED_STATE } from "./sharedState.model";
+import { ActivatedRoute } from "@angular/router";
+
 
 @Component({
     selector: "paForm",

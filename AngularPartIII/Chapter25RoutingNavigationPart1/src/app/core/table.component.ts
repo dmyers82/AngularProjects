@@ -11,7 +11,9 @@ import { Observer } from "rxjs";
 
 export class TableComponent {
     constructor(private model: Model,
-        @Inject(SHARED_STATE) public observer: Observer<SharedState>) { }
+        @Inject(SHARED_STATE) public observer: Observer<SharedState>) { 
+            console.log("TableComponent constructor called.");
+        }
 
     getProduct(key: number): Product {
         return this.model.getProduct(key);
