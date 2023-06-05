@@ -4,6 +4,8 @@ import { Message } from "./message.model";
 import { MODES, SharedState, SHARED_STATE } from "../core/sharedState.model";
 import { Model } from "../model/repository.model"
 import { Observable } from "rxjs";
+import { Router, NavigationEnd, NavigationCancel } from "@angular/router";
+import { filter } from "rxjs/operators";
 
 @Component({
     selector: "paMessages",
