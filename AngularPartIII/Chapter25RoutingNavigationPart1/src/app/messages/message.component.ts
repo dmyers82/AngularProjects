@@ -15,10 +15,12 @@ import { filter } from "rxjs/operators";
 export class MessageComponent {
     lastMessage: Message;
     constructor(messageService: MessageService, router: Router) {
+        console.log("MessageComponent constructor called.");
         messageService.messages.subscribe(m => this.lastMessage = m);
         router.events
         .pipe(filter(e => e instanceof NavigationEnd
         || e instanceof NavigationCancel))
         .subscribe(e => { this.lastMessage = null; });
-        }
+        console.log("MessageComponent constructor call complete.");
+    }
 }
