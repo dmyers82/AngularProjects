@@ -1,8 +1,8 @@
 import { Component, Inject } from "@angular/core";
 import { Product } from "../model/product.model";
 import { Model } from "../model/repository.model";
-import { MODES, SharedState, SHARED_STATE } from "./sharedState.model";
-import { Observer } from "rxjs";
+//import { MODES, SharedState, SHARED_STATE } from "./sharedState.model";
+//import { Observer } from "rxjs";
 
 @Component({
     selector: "paTable",
@@ -10,8 +10,8 @@ import { Observer } from "rxjs";
 })
 
 export class TableComponent {
-    constructor(private model: Model,
-        @Inject(SHARED_STATE) public observer: Observer<SharedState>) { 
+    constructor(private model: Model
+        /*@Inject(SHARED_STATE) public observer: Observer<SharedState>*/) { 
             console.log("TableComponent constructor called.");
         }
 
@@ -29,12 +29,12 @@ export class TableComponent {
         console.log("deleteProduct called key - " + key);
     }
 
-    editProduct(key: number) {
+    /* editProduct(key: number) {
         this.observer.next(new SharedState(MODES.EDIT, key - 1));
         console.log("editProduct called key - " + key);
-    }
+    } */
 
-    createProduct() {
+    /* createProduct() {
         this.observer.next(new SharedState(MODES.CREATE));
-    }
+    } */
 }
