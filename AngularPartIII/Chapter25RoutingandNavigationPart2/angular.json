@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AzureRouting": {
+    "Chapter25RoutingandNavigationPart2": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -38,7 +38,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/AzureRouting",
+            "outputPath": "dist/Chapter25RoutingandNavigationPart2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -49,8 +49,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -88,18 +87,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "AzureRouting:build"
+            "browserTarget": "Chapter25RoutingandNavigationPart2:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "AzureRouting:build:production"
+              "browserTarget": "Chapter25RoutingandNavigationPart2:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AzureRouting:build"
+            "browserTarget": "Chapter25RoutingandNavigationPart2:build"
           }
         },
         "test": {
@@ -136,15 +135,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "AzureRouting:serve"
+            "devServerTarget": "Chapter25RoutingandNavigationPart2:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "AzureRouting:serve:production"
+              "devServerTarget": "Chapter25RoutingandNavigationPart2:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "AzureRouting"
+  "defaultProject": "Chapter25RoutingandNavigationPart2"
 }
