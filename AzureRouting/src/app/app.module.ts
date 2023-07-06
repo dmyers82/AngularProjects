@@ -1,22 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
-import { MainMenuComponent } from './mainmenu.component'
 import { AppComponent } from './app.component';
 import { routing } from "./app.routing"
-import { SearchCustomerComponent } from './search/searchcustomer';
-import { NameListComponent } from './search/namelist.component';
-import { PersonalDemographComponent } from './customerinfo/personaldemographics/personaldemograph.component';
+import { CoreModule } from "./core/core.module";
+
 
 @NgModule({
-  declarations: [
-    AppComponent, CustomerFolderComponent, NameListComponent, 
-    PersonalDemographComponent, SearchCustomerComponent],
-  imports: [
-    BrowserModule, routing
-  ],
-  providers: [],
-  bootstrap: [MainMenuComponent]
-  // bootstrap: [AppComponent]
+  imports: [BrowserModule, CoreModule, routing],
+  declarations: [AppComponent],
+  
+  //providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

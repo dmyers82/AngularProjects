@@ -9,4 +9,7 @@ import { Observable } from "rxjs";
 
 export class CustomerFolderComponent{
 
+    constructor(){
+            console.log("CustomerFolderComponent constructor called.");
+        }
 }
