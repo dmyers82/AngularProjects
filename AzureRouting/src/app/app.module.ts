@@ -9,7 +9,7 @@ import { CoreModule } from "./core/core.module";
   imports: [BrowserModule, CoreModule, routing],
   declarations: [AppComponent],
   
-  //providers: [],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
