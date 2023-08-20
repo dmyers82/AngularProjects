@@ -1,0 +1,57 @@
+<h1>This is the search customer template</h1>
+
+<form class="m-2">
+    <fieldset>
+        <legend>Folder Type</legend>
+        <div>
+            <label for="personal">Personal</label>
+                <input type="radio" id="personal" name="folder" value="personal" checked="true" (click)="getFolderType(true)">
+        </div>
+
+        <div>
+            <label for="business">Business</label>
+                <input type="radio" id="business" name="folder" value="business"  (click)="getFolderType(false)">
+        </div>
+    </fieldset>
+   
+    <br>
+    
+    <div class="form-group">
+        <label>Customer ID</label>
+        <input class="form-control" title="custid" name = "custid" class="form-control" [(ngModel)]="newCustomer.id"/>
+    </div>
+
+    <div class="form-group">
+        <label>SSNEIN</label>
+        <input title= "ssnin" name = "ssntin"  class="form-control" [(ngModel)]="newCustomer.ssntin"/>
+    </div>
+
+    <div class="form-group">  
+        <label>Last Name</label>
+        <input title= "lastname"  name = "lastname" class="form-control" [(ngModel)]="newCustomer.fullname"/>
+    </div>
+
+    <div *ngIf="optPersonal" class="form-group">
+        <label>First Name</label>
+        <input title="firstname" name = "firstname" class="form-control" [(ngModel)]="newCustomer.firstname"/>
+    </div>
+
+    <div class="form-group">
+        <label>Account</label>
+        <input title="accountnumber" name = "accountnumber" class="form-control" [(ngModel)]="newCustomer.accountnumber"/>
+    </div>
+
+    <br>
+
+    <div class="row">
+  
+       <!-- <div class="col-2">
+           <button type="button" class="btn btn-primary" (click)="getCustomer(selectedCustomer)">Search</button>
+       </div> -->
+
+       <div class="col-2">
+           <button type="button" class="btn btn-primary" (click)="getAzureCustomer(1)">Azure</button>
+       </div>
+    </div>
+</form>
+
